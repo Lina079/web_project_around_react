@@ -1,0 +1,126 @@
+.popup {
+  position:absolute;
+  background-color: #fff;
+  color: black;
+  width: 430px;
+  height: 330px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  border-radius: 4%;
+  padding: 0%;
+  margin: 0px;
+}
+
+.popup__close-btn{
+  position: absolute;
+  align-items: end;
+  border: none;
+  top: -43px;
+  right: -5%;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+}
+.popup__close-btn:hover{
+  opacity: 0.5;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 4px #c4c4c4);
+
+}
+
+.popup__title {
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  margin: 34px 64px 54px 36px;
+}
+
+.popup__fill-form {
+  border: none;
+  margin: auto;
+  border-radius: 2%;
+}
+
+.poup__form-item{
+  border: none;
+}
+
+
+.popup__form input[type="text"]{
+border: none;
+border-bottom: 1px solid #fff;
+background: transparent;
+outline: none;
+color: #c4c4c4;
+font-size: 14px;
+margin: 0 3%;
+}
+
+.popup__line{
+  margin: 1% 0 10% 3%;
+  height: 1px;
+  background-color: #c4c4c4;
+  width: 90%;
+}
+
+.popup__form-btn {
+  display: flex;
+  background-color: #fff;
+  border-radius: 3%;
+  width: 360px;
+  margin-left:3%;
+  margin-right: 0;
+  justify-content: center;
+  height: 50px;
+  margin-bottom: 50px;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  color: #c4c4c4;
+  align-items: center;
+  border: 1px solid #c4c4c4;
+  align-self: center;
+  padding: 0px;
+}
+
+.popup__form-btn:disabled{
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.popup__form-btn:hover{
+opacity:  0.8;
+cursor: pointer;
+filter: drop-shadow(0 4px 4px #c4c4c4);
+}
+
+@media screen and (max-width: 880px) {
+  .popup {
+    width: 283px;
+    height: 322px;
+  }
+  .popup__close-btn {
+    width: 15px;
+    height: 15px;
+    right: 25px;
+  }
+
+  .popup__title{
+    font-size: 18px;
+    margin: 25px 22px 76px;
+  }
+
+  .popup__form input[type="text"]{
+    font-size: 14px;
+  }
+
+
+  .popup__form-btn {
+    width: 238px;
+    height: 46px;
+    margin-bottom: 25px;
+  }
+}
