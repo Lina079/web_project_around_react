@@ -27,24 +27,69 @@ dheaderd.<!DOCTYPE html>
     />
     </div>
   </header>
+
   <section class="profile">
     <div class="profile__avatar">
       <img
-      class="profile__avatar"
+      class="profile__avatar-image"
       src="images/Avatar.png"
       alt="foto de profile"
       />
-    </div>
-    <div class="profile__info">
-      <p class="name">Jackes Cousteau</p><span class="profile__editbutton">
-        <img src="/images/Vector.svg" alt="slash"/>
-      </span>
-    </div>
-    <div class="profile__description">
-      <p class+="profile__description">Explorador</p>
-    </div>
+     </div>
+     <div class="profile__info">
+      <div class="profile__name profile__name-button">
+      <h2 class="profile__name">Jackes Cousteau</h2>
+      <button class="profile__editbutton"></button>
+     </div>
+      <div class="profile__description">
+      <p class="profile__description">Explorador</p>
+      </div>
+      </div>
+      <button class="profile__addbutton">+</button>
   </section>
+
+  <section class="popup">
+    <div class="popup__container">
+      <button class="popup__close-btn">
+      <img
+      class="popup__close-icon"
+      src="./images/popoup/Close Icon.svg"
+      alt="Close Icon"
+      />
+    </button>
+    <p class="popup__title">Editar perfil</p>
+    <form class="popup__form">
+      <fieldset class="popup__fill-form">
+        <label for="name" class="popup__label-form"></label>
+        <input
+        type="text"
+        class="poup__form-item popup__form-name"
+        id="name"
+        placeholder="Nombre"
+        required
+        />
+        <div class="popup__line"></div>
+        <label for="about" class="popup__label-form"></label>
+        <input
+        class="popup__form-item popup__form-about"
+        type="text"
+        id="about"
+        name="about"
+        placeholder="Acerca de mí"
+        required
+        />
+        <div class="popup__line"></div>
+        <button type="submit" class="form__form-btn">Guardar</button>
+      </fieldset>
+      </form>
+      </div>
+  </section>
+
+  <section class="elements"></section>
+
+<section class="footer"></section>
 </div>
+<script src="index.js"></script>
 </body>
 </html>
 
