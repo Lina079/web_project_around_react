@@ -39,18 +39,18 @@ dheaderd.<!DOCTYPE html>
      <div class="profile__info">
       <div class="profile__name profile__name-button">
       <h2 class="profile__name">Jackes Cousteau</h2>
-      <button class="profile__editbutton"></button>
+      <button class="profile__editbutton" id="open"></button>
      </div>
       <div class="profile__description">
       <p class="profile__description">Explorador</p>
       </div>
       </div>
-      <button class="profile__addbutton">+</button>
+      <button class="profile__addbutton" id="addButton">+</button>
   </section>
-
+  <div class="popup-backdrop"></div>
   <section class="popup">
     <div class="popup__container-form">
-      <button class="popup__close-btn">
+      <button class="popup__close-btn" id="close">
       <img
       class="popup__close-icon"
       src="./images/popoup/Close Icon.svg"
@@ -79,7 +79,7 @@ dheaderd.<!DOCTYPE html>
         required
         />
         <div class="popup__line"></div>
-        <button type="submit" class="popup__form-btn">Guardar</button>
+        <button type="submit" class="popup__form-btn" id="Guardar">Guardar</button>
       </fieldset>
       </form>
       </div>
