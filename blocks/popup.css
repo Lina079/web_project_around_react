@@ -6,7 +6,7 @@
   color: black;
   width: 430px;
   height: 330px;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-sizing: border-box;
@@ -37,6 +37,11 @@
   pointer-events: auto;
 }
 
+.backdrop_visible{
+  display: block;
+  opacity: 1;
+}
+
 .popup__close-btn{
   position: absolute;
   align-items: end;
@@ -44,13 +49,14 @@
   top: -43px;
   right: -5%;
   color: #fff;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   background: transparent;
   background-size: cover;
   cursor: pointer;
-  background: url("../images/popoup/Close\ Icon.svg" no-repeat center);
+  background: no-repeat center;
 }
+
 .popup__close-btn:hover{
   opacity: 0.7;
   cursor: pointer;
@@ -126,13 +132,14 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
 
 @media screen and (max-width: 880px) {
   .popup {
-    width: 283px;
+    width: 270px;
     height: 322px;
+    overflow: visible;
   }
-  .popup__close-btn {
+
+  .popup__close-btn{
     width: 15px;
     height: 15px;
-    right: 25px;
   }
 
   .popup__title{

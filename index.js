@@ -1,21 +1,21 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const popup = document.querySelector('.popup');
-  const backdrop = document.querySelector('.popup-backdrop');
   const openButton = document.getElementById('open');
   const closeButton = document.getElementById('close');
+  const popup = document.querySelector('.popup');
+  const backdrop = document.querySelector('.popup-backdrop');
+
 
 
   function openPopup() {
-      popup.style.display = 'block';
-      backdrop.style.display = 'block';
+      popup.classList.add('popup_opened');
+      backdrop.classList.add('backdrop_visible');
       document.body.style.overflow = 'hidden';
   }
 
 
   function closePopup() {
-      popup.classList.add('popup_opened');
-      popup.style.display = 'none';
-      backdrop.style.display = 'none';
+      popup.classList.remove('popup_opened');
+      backdrop.classList.remove('backdrop_visible');
       document.body.style.overflow = 'auto';
   }
 
