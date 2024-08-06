@@ -1,15 +1,13 @@
 .footer{
   max-width: 880px;
   width: 880px;
-  margin-top: 67px;
-  margin-bottom: 60px;
+  margin: 67px auto 60px;
 }
 
 .footer__firma{
   max-width: 318px;
   justify-content: left;
   width: 318px;
-  margin-left: 200px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 400;
   font-size: 18px;
