@@ -77,3 +77,28 @@
   color:black;
 }
 
+@media screen and (max-width: 880px) {
+  .elements {
+    grid-template-columns: 1fr;
+    margin: auto;
+    padding-top: 36px;
+    max-width: 282px;
+    width: 282px;
+  }
+
+  .element__container {
+    max-width: 282px;
+    width: 282px;
+    max-height: 361px;
+    height: 361px;
+    margin: auto;
+  }
+
+  .element__container-photo{
+    max-width: 282px;
+    width: 282px;
+  }
+}
+
+
+
