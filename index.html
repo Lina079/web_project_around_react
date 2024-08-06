@@ -58,7 +58,7 @@
       />
     </button>
     <p class="popup__title">Editar perfil</p>
-    <form class="popup__form">
+    <form class="popup__form" id="editForm">
       <fieldset class="popup__fill-form">
         <label for="name" class="popup__label-form"></label>
         <input
@@ -79,7 +79,7 @@
         required
         />
         <div class="popup__line"></div>
-        <button type="submit" class="popup__form-btn" id="Guardar">Guardar</button>
+        <button type="submit" class="popup__form-btn" id="saveButton" disabled>Guardar</button>
       </fieldset>
       </form>
       </div>
@@ -96,7 +96,7 @@
        <div class="element__container-info">
        <h3 class="element__container-name-place">Valle de yosemite</h3>
        <img
-        class="element__container-heart"
+        class="element__container-heart" id="heart"
         src="./images/heart-vector.png"
         alt="icono-de-corazón"
        />
@@ -112,7 +112,7 @@
          <div class="element__container-info">
          <h3 class="element__container-name-place">Lago Louise</h3>
           <img
-            class="element__container-heart"
+            class="element__container-heart" id="heart"
             src="./images/heart-vector.png"
             alt="icono-de-corazón"
             />
@@ -130,7 +130,7 @@
           <div class="element__container-info">
           <h3 class="element__container-name-place">Montañas Calvas</h3>
             <img
-          class="element__container-heart"
+          class="element__container-heart" id="heart"
           src="./images/heart-vector.png"
           alt="icono-de-corazón"
           />
@@ -147,7 +147,7 @@
             <div class="element__container-info">
              <h3 class="element__container-name-place">Latemar</h3>
             <img
-            class="element__container-heart"
+            class="element__container-heart" id="heart"
             src="./images/heart-vector.png"
             alt="icono-de-corazón"
             />
@@ -163,7 +163,7 @@
               <div class="element__container-info">
               <h3 class="element__container-name-place">Vanois National...</h3>
               <img
-              class="element__container-heart"
+              class="element__container-heart" id="heart"
               src="./images/heart-vector.png"
               alt="icono-de-corazón"
               />
@@ -179,7 +179,7 @@
                 <div class="element__container-info">
                 <h3 class="element__container-name-place">Lago di Braies</h3>
                 <img
-                class="element__heart"
+                class="element__container-heart" id="heart"
                 src="./images/heart-vector.png"
                 alt="icono-de-corazón"
                 />
