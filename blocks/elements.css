@@ -62,6 +62,7 @@
   line-height: 29.05px;
   color:black;
   align-self: start;
+  justify-content: center;
 }
 
 .element__container-heart{
