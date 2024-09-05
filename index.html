@@ -39,18 +39,18 @@
      <div class="profile__info">
       <div class="profile__name profile__name-button">
       <h2 class="profile__name">Jackes Cousteau</h2>
-      <button class="profile__editbutton" id="open"></button>
+      <button class="profile__editbutton" id="open-edit"></button>
      </div>
       <div class="profile__description">
       <p class="profile__description">Explorador</p>
       </div>
       </div>
-      <button class="profile__addbutton" id="addButton">+</button>
+      <button class="profile__addbutton" id="addButton-elements">+</button>
   </section>
   <div class="popup-backdrop"></div>
-  <section class="popup">
-    <div class="popup__container-form">
-      <button class="popup__close-btn" id="close">
+  <section class="popup" id="popup-form">
+    <div class="popup__container-form" id="container-form">
+      <button class="popup__close-btn" id="close-edit">
       <img
       class="popup__close-icon"
       src="./images/popoup/Close-Icon.svg"
@@ -84,114 +84,68 @@
       </form>
       </div>
   </section>
-
-      <section class="elements">
-
-        <div class="element__container">
-        <img
-        class="element__container-photo"
-        src="./images/Galeria/valle-de-yosemite.jpg"
-        alt="fotografia-valle-yosemite"
+  <div class="popup-backdrop-elements"></div>
+  <section class="popup" id="popup-elements">
+    <div class="popup__container-form" id="container-elements-form">
+      <button class="popup__close-btn" id="close-addbutton-elements">
+      <img
+      class="popup__close-icon"
+      src="./images/popoup/Close-Icon.svg"
+      alt="Close-Icon"
+      />
+    </button>
+    <p class="popup__title">Crea un nuevo lugar</p>
+    <form class="popup__form" id="editForm">
+      <fieldset class="popup__fill-form">
+        <label for="name" class="popup__label-form"></label>
+        <input
+        type="text"
+        class="poup__form-item popup__form-title"
+        id="title"
+        placeholder="Nombre del lugar"
+        required
         />
-       <div class="element__container-info">
-       <h3 class="element__container-name-place">Valle de Yosemite</h3>
-       <img
-        class="element__container-heart" id="heart"
-        src="./images/heart-vector.png"
-        alt="icono-de-corazón"
-       />
-       </div>
-       </div>
-
-         <div class="element__container">
-         <img
-         class="element__container-photo"
-         src="./images/Galeria/lago-de-louise.jpg"
-         alt="fotografia-lago-louise"
-          />
-         <div class="element__container-info">
-         <h3 class="element__container-name-place">Lago Louise</h3>
-          <img
-            class="element__container-heart" id="heart"
-            src="./images/heart-vector.png"
-            alt="icono-de-corazón"
-            />
-         </div>
-         </div>
-
-
-
-         <div class="element__container">
-          <img
-          class="element__container-photo"
-          src="images/Galeria/atardecer.jpg"
-          alt="fotografia-montaña-calva"
-          />
-          <div class="element__container-info">
-          <h3 class="element__container-name-place">Montañas Calvas</h3>
-            <img
-          class="element__container-heart" id="heart"
-          src="./images/heart-vector.png"
-          alt="icono-de-corazón"
-          />
-          </div>
-          </div>
-
-
-           <div class="element__container">
-            <img
-            class="element__container-photo"
-            src="./images/Galeria/latemar.jpg"
-            alt="fotografia-latemar"
-            />
-            <div class="element__container-info">
-             <h3 class="element__container-name-place">Latemar</h3>
-            <img
-            class="element__container-heart" id="heart"
-            src="./images/heart-vector.png"
-            alt="icono-de-corazón"
-            />
-            </div>
-           </div>
-
-            <div class="element__container">
-              <img
-              class="element__container-photo"
-              src="./images/Galeria/vanois-national.jpg"
-              alt="fotografia-vanois-national"
-              />
-              <div class="element__container-info">
-              <h3 class="element__container-name-place">Vanois National...</h3>
-              <img
-              class="element__container-heart" id="heart"
-              src="./images/heart-vector.png"
-              alt="icono-de-corazón"
-              />
-              </div>
-             </div>
-
-              <div class="element__container">
-                <img
-                class="element__container-photo"
-                src="./images/Galeria/lago-di-braies.jpg"
-                alt="fotografia-lago-di-braies"
-                />
-                <div class="element__container-info">
-                <h3 class="element__container-name-place">Lago di Braies</h3>
-                <img
-                class="element__container-heart" id="heart"
-                src="./images/heart-vector.png"
-                alt="icono-de-corazón"
-                />
-                </div>
-             </div>
-             </section>
+        <div class="popup__line"></div>
+        <label for="about" class="popup__label-place"></label>
+        <input
+        class="popup__form-item popup__form-place"
+        type="text"
+        id="place"
+        name="place"
+        placeholder="Url de la imagen"
+        required
+        />
+        <div class="popup__line"></div>
+        <button type="submit" class="popup__form-btn" id="saveButton-elements" disabled>Crear</button>
+      </fieldset>
+      </form>
+      </div>
+  </section>
+      <section class="elements">
+      </section>
 
   <section class="footer">
   <h4 class="footer__firma">
     © 2024 Lina Castro. Around The U.S.
   </h4>
   </section>
+  <template id="element-template">
+    <div class="element__container">
+      <img
+      class="element__container-photo"
+      src=""
+      alt=""
+      />
+      <div class="element__container-info">
+      <h3 class="element__container-name-place"></h3>
+      <img
+      class="element__container-heart heart-icon" id="heart"
+      src="./images/heart-vector.png"
+      alt="Heart Icon"
+      />
+      </div>
+      </div>
+  </template>
 </div>
 <script src="./scripts/index.js"></script>
 </body>

@@ -11,7 +11,7 @@
   justify-content: center;
 }
 
-.element__container{
+.element__container {
   display: flex;
   flex-direction: column;
   background-color: #fff;
@@ -75,16 +75,17 @@
   width: 21px;
   max-height: 19px;
   height: 19px;
-  color:black;
 }
 
-.element__container-heart:hover{
+.heart-icon {
   cursor: pointer;
+  background-image: url('../images/heart-vector.png');
 }
 
-.element__container-heart.active {
-  content: url(../images/black-heart.png);
+.heart-icon.active {
+  content: url('../images/black-heart.png');
 }
+
 
 @media screen and (max-width: 880px) {
   .elements {
