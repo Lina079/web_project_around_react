@@ -23,7 +23,7 @@
   max-height: 361px;
   height: 361px;
   border-radius: 10px;
-
+  position: relative;
 }
 
 .element__container-photo{
@@ -51,8 +51,6 @@
   height: 23px;
   margin: 25px 15px 31px 21px;
 }
-
-
 
 .element__container-name-place{
   display: flex;
@@ -84,6 +82,23 @@
 
 .heart-icon.active {
   content: url('../images/black-heart.png');
+}
+
+.element__trash-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  z-index: 10;
+  cursor: pointer;
+  background-image: url(../images/can_trash_icon2.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.element__trash-icon:hover {
+  opacity: 0.8;
 }
 
 

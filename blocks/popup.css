@@ -79,6 +79,11 @@
 
 .poup__form-item{
   border: none;
+  color: #c4c4c4
+}
+
+.popup__form-item:valid {
+  color: black;
 }
 
 

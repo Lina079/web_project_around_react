@@ -64,8 +64,16 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.add('active');
       };
     });
+
+    element.querySelector(".element__trash-icon").addEventListener('click', function () {
+      element.remove(); // Elimina el elemento del DOM
+    });
+
     elementArea.appendChild(element);
+
    }
+
+
 
    //abrir y cerrar popups
   function closePopup() {
@@ -115,6 +123,16 @@ closeAddButtonElements.addEventListener('click', function(){
   document.body.style.overflow ='auto';
 });
 
+titleInput.addEventListener('input', function() {
+  titleInput.style.color = titleInput.value.trim() !== '' ? 'black' : '#c4c4c4'; // Cambia a negro si hay texto
+});
+
+placeInput.addEventListener('input', function() {
+  placeInput.style.color = placeInput.value.trim() !== '' ? 'black' : '#c4c4c4'; // Cambia a negro si hay texto
+});
+
+
+
 //función para manejar el envio del formulario de nuevos elementos
 function addNewElements(event) {
   event.preventDefault();
@@ -138,7 +156,6 @@ function addNewElements(event) {
 
 titleInput.addEventListener('input', updateCreateButtonState);
 placeInput.addEventListener('input', updateCreateButtonState);
-
 
 });
 
