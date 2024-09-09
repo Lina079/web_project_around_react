@@ -4,18 +4,17 @@ document.addEventListener('DOMContentLoaded', function() {
   const openAddButtonElements = document.querySelector("#addButton-elements");
   const closeAddButtonElements = document.querySelector("#close-addbutton-elements");
   const popup = document.querySelector("#popup-form");
-  const backdrop = document.querySelector('.popup-backdrop');
   const popupElements = document.querySelector("#popup-elements");
+  const backdrop = document.querySelector('.popup-backdrop');
   const backdropElements = document.querySelector(".popup-backdrop-elements");
   const nameInput = document.getElementById('name');
-  const titleInput = document.querySelector("#title");
   const aboutInput = document.getElementById('about');
+  const titleInput = document.querySelector("#title");
   const placeInput = document.querySelector("#place");
   const saveButton = document.getElementById('saveButton');
   const saveButtonElements = document.querySelector("#saveButton-elements");
   const profileName = document.querySelector('.profile__name');
   const profileDescription = document.querySelector('.profile__description');
-  const heartIcon = document.querySelectorAll(".heart-icon");
   const elementTemplate = document.querySelector("#element-template").content;
   const elementArea = document.querySelector(".elements");
 
@@ -47,103 +46,116 @@ document.addEventListener('DOMContentLoaded', function() {
   ];
 
 
-  function createElement(name, link){
-    const element = elementTemplate.querySelector(".element__container").cloneNode(true);
-    const elementImage = element.querySelector(".element__container-photo");
-    const elementInfo = element.querySelector(".element__container-name-place");
-
-    elementInfo.textContent = name;
-    elementImage.src = link;
-    elementImage.alt = name;
-
-    const heartIcon = element.querySelector(".heart-icon");
-    if (heartIcon){
-        heartIcon.addEventListener('click', function(){
-          console.log('Heart icon clicked');
-          heartIcon.classList.toggle('active');
-        })
-    }
-
-    elementArea.append(element);
-  }
-
   initialElements.forEach (function (item){
     createElement(item.name, item.link);
   })
 
 
-  function openPopup() {
-      popup.classList.add('popup_opened');
-      backdrop.classList.add('backdrop_visible');
-      document.body.style.overflow = 'hidden';
-  }
+    //Crear y añadir elementos al DOM
+  function createElement(name, link){
+    const element = elementTemplate.cloneNode(true);
+    element.querySelector(".element__container-photo").src = link;
+    element.querySelector(".element__container-photo").alt = name;
+    element.querySelector(".element__container-name-place").textContent = name;
+    element.querySelector(".heart-icon").addEventListener('click', function(){
+      if (this.classList.contains('active')){
+        this.classList.remove('active');
+      } else {
+        this.classList.add('active');
+      };
+    });
+    elementArea.appendChild(element);
+   }
 
-  function openPopupElements(){
-    popupElements.classList.add("popup_opened");
-    backdropElements.classList.add("backcdrop_visible");
-    document.body.style.overflow = 'hidden';
-  }
-
-
-
+   //abrir y cerrar popups
   function closePopup() {
-      popup.classList.remove('popup_opened');
-      backdrop.classList.remove('backdrop_visible');
-      document.body.style.overflow = 'auto';
-  }
-
-  function closePoupElements(){
-    popupElements.classList.remove('popup_opened');
-    backdropElements.classList.remove('backdropElements_visible');
+    popup.classList.remove('popup_opened');
+    document.querySelector('.popup-backdrop').classList.remove('backdrop_visible');
     document.body.style.overflow = 'auto';
   }
 
-  function checkForm() {
-    if (nameInput.value.trim() !== '' ||  aboutInput.value.trim() !== '') {
-      saveButton.disabled = false;
-      saveButton.classList.add('enabled');
-    } else {
-      saveButton.disabled = true;
-      saveButton.classList.remove('enabled');
-    }
-  }
-
-  function saveChanges(event) {
-    event.preventDefault();
-    if (nameInput.value.trim() !== '') {
-      profileName.textContent = nameInput.value.trim();
-    }
-    if (aboutInput.value.trim() !== '') {
-      profileDescription.textContent = aboutInput.value.trim();
-    }
+  //función que maneja los cambios del perfil
+  function saveChanges(event){
+  event.preventDefault();
+  if (nameInput.value.trim() !== '' && aboutInput.value.trim()){
+    profileName.textContent = nameInput.value.trim();
+    profileDescription.textContent = aboutInput.value.trim();
     closePopup();
   }
+}
 
-  function createNewElements(){
-    if (titleInput.value.trim() !== '' ||  placeInput.value.trim() !== '') {
-      saveButtonElements.disabled = false;
-      saveButtonElements.classList.add('enabled');
-    } else {
-      saveButtonElements.disabled = true;
-      saveButtonElements.classList.remove('enabled');
-    }
+  nameInput.addEventListener('input', updateButtonState);
+  aboutInput.addEventListener('input', updateButtonState);
+
+  function updateButtonState(){
+    saveButton.disabled = !nameInput.value.trim() || !aboutInput.value.trim();
+    saveButton.classList.toggle('enabled', !saveButton.disabled);
+
   }
 
-
-  openButton.addEventListener('click', openPopup);
-  openAddButtonElements.addEventListener('click', openPopupElements);
-  closeButton.addEventListener('click', closePopup);
-  closeAddButtonElements.addEventListener('click', closePoupElements);
-  backdrop.addEventListener('click', closePopup);
-  backdropElements.addEventListener('click', closePoupElements)
-  nameInput.addEventListener('input', checkForm);
-  aboutInput.addEventListener('input', checkForm);
-  titleInput.addEventListener('input', createNewElements);
-  placeInput.addEventListener('input',createNewElements );
-  saveButton.addEventListener('click', saveChanges);
-
-
+  //Evento para manejar el submit del formulario de perfil
+  document.querySelector('#popup-form').addEventListener('submit', saveChanges);
+    openButton.addEventListener('click', function(){
+    popup.classList.add('popup_opened');
+    document.querySelector('.popup-backdrop').classList.add('backdrop_visible');
+    document.body.style.overflow = 'hidden';
   });
+  closeButton.addEventListener('click', closePopup);
+
+//Eventos para abrir y cerrar el popup de añadir nuevos elementos
+openAddButtonElements.addEventListener('click', function(){
+  popupElements.classList.add('popup_opened');
+  backdropElements.classList.add('backdrop_visible');
+  document.body.style.overflow = 'hidden';
+});
+
+closeAddButtonElements.addEventListener('click', function(){
+  popupElements.classList.remove('popup_opened');
+  backdropElements.classList.remove('backdrop_visible');
+  document.body.style.overflow ='auto';
+});
+
+//función para manejar el envio del formulario de nuevos elementos
+function addNewElements(event) {
+  event.preventDefault();
+  const titleValue = titleInput.value.trim();
+  const placeValue = placeInput.value.trim();
+  if (titleValue && placeValue){
+    createElement(titleValue, placeValue);
+    titleInput.value = '';
+    placeInput.value = '';
+    closeAddButtonElements.click();
+  };
+}
+
+  document.querySelector('#editform-elements').addEventListener('submit', addNewElements);
+
+  function updateCreateButtonState(){
+  const isFormValid = titleInput.value.trim() && placeInput.value.trim();
+  saveButtonElements.disabled = !isFormValid;
+  saveButtonElements.classList.toggle('enabled', isFormValid);
+}
+
+titleInput.addEventListener('input', updateCreateButtonState);
+placeInput.addEventListener('input', updateCreateButtonState);
+
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
