@@ -34,7 +34,7 @@
   flex-direction: row;
 }
 
-.profile__name{
+.profile__name  {
   max-height: 39px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 42px;
@@ -43,6 +43,7 @@
   color: #fff;
   padding: 0%;
   margin-bottom: 10px;
+  text-overflow: ellipsis;
 }
 
 .profile__editbutton {
@@ -63,7 +64,7 @@
   cursor: pointer;
  }
 
- .profile__description {
+ .profile__description  {
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-weight: 415px;
   font-size: 18px;
@@ -72,6 +73,7 @@
   padding: 0%;
   align-self: self-start;
   margin-top: 0;
+  text-overflow: ellipsis;
 }
 
 .profile__addbutton {
@@ -89,9 +91,6 @@
   opacity: 0.8;
   cursor: pointer;
 }
-
-
-
 
 
 @media screen and (max-width: 880px){

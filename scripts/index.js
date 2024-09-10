@@ -49,11 +49,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   ];
 
-
   initialElements.forEach (function (item){
     createElement(item.name, item.link);
   })
-
 
     //Crear y añadir elementos al DOM
   function createElement(name, link){
@@ -82,9 +80,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  elementArea.appendChild(element);  // Añadimos el elemento al área de elementos
+  elementArea.prepend(element);  // Añadimos el elemento al área de elementos
 }
-
 
    //abrir y cerrar popups
   function closePopup() {
@@ -134,12 +131,21 @@ closeAddButtonElements.addEventListener('click', function(){
   document.body.style.overflow ='auto';
 });
 
-titleInput.addEventListener('input', function() {
-  titleInput.style.color = titleInput.value.trim() !== '' ? 'black' : '#c4c4c4'; // Cambia a negro si hay texto
-});
+//activa el color en los inputs
+const activeColor = 'black';
+const inactiveColor = '#c4c4c4';
 
-placeInput.addEventListener('input', function() {
-  placeInput.style.color = placeInput.value.trim() !== '' ? 'black' : '#c4c4c4'; // Cambia a negro si hay texto
+titleInput.addEventListener ('input', function() {
+titleInput.style.color = titleInput.value.trim() !== '' ? activeColor : inactiveColor;
+});
+placeInput.addEventListener ('input', function(){
+placeInput.style.color = placeInput.value.trim() !== '' ? activeColor : inactiveColor;
+});
+nameInput.addEventListener('input', function(){
+nameInput.style.color = nameInput.value.trim() !== '' ? activeColor : inactiveColor;
+});
+aboutInput.addEventListener('input', function(){
+  aboutInput.style.color = aboutInput.value.trim() !== '' ? activeColor : inactiveColor;
 });
 
 //función para manejar el envio del formulario de nuevos elementos
@@ -154,10 +160,9 @@ function addNewElements(event) {
     closeAddButtonElements.click();
   };
 }
+document.querySelector('#editform-elements').addEventListener('submit', addNewElements);
 
-  document.querySelector('#editform-elements').addEventListener('submit', addNewElements);
-
-  function updateCreateButtonState(){
+function updateCreateButtonState(){
   const isFormValid = titleInput.value.trim() && placeInput.value.trim();
   saveButtonElements.disabled = !isFormValid;
   saveButtonElements.classList.toggle('enabled', isFormValid);
@@ -165,7 +170,6 @@ function addNewElements(event) {
 
 titleInput.addEventListener('input', updateCreateButtonState);
 placeInput.addEventListener('input', updateCreateButtonState);
-
 
 // Función para abrir el popup de la imagen del lugar
 function openImagePopup(link, name) {
