@@ -65,13 +65,18 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     });
 
-    element.querySelector(".element__trash-icon").addEventListener('click', function () {
-      element.remove(); // Elimina el elemento del DOM
-    });
+   // Evento para el ícono de la papelera
+  element.querySelector(".element__trash-icon").addEventListener('click', function () {
+    const container = this.closest('.element__container');
+    if (container) {
+      container.remove();  // Elimina el contenedor completo del DOM
+    }
+  });
 
-    elementArea.appendChild(element);
+  elementArea.appendChild(element);  // Añadimos el elemento al área de elementos
+}
 
-   }
+
 
 
 
