@@ -17,6 +17,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const profileDescription = document.querySelector('.profile__description');
   const elementTemplate = document.querySelector("#element-template").content;
   const elementArea = document.querySelector(".elements");
+  const imagePopup = document.querySelector('.image-popup');
+  const imagePopupImage = document.querySelector('.image-popup__image');
+  const imagePopupTitle = document.querySelector('.image-popup__title');
+  const imagePopupCloseButton = document.querySelector('.image-popup__close-btn');
 
   const initialElements = [
     {
@@ -65,6 +69,11 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     });
 
+    // Evento para abrir el popup de imagen al hacer clic en la imagen del lugar
+  element.querySelector(".element__container-photo").addEventListener('click', function() {
+    openImagePopup(link, name);
+  });
+
    // Evento para el ícono de la papelera
   element.querySelector(".element__trash-icon").addEventListener('click', function () {
     const container = this.closest('.element__container');
@@ -75,9 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   elementArea.appendChild(element);  // Añadimos el elemento al área de elementos
 }
-
-
-
 
 
    //abrir y cerrar popups
@@ -136,8 +142,6 @@ placeInput.addEventListener('input', function() {
   placeInput.style.color = placeInput.value.trim() !== '' ? 'black' : '#c4c4c4'; // Cambia a negro si hay texto
 });
 
-
-
 //función para manejar el envio del formulario de nuevos elementos
 function addNewElements(event) {
   event.preventDefault();
@@ -161,6 +165,21 @@ function addNewElements(event) {
 
 titleInput.addEventListener('input', updateCreateButtonState);
 placeInput.addEventListener('input', updateCreateButtonState);
+
+
+// Función para abrir el popup de la imagen del lugar
+function openImagePopup(link, name) {
+  imagePopupImage.src = link;
+  imagePopupTitle.textContent = name;
+  imagePopup.classList.add('image-popup_opened');
+  document.body.style.overflow = 'hidden';
+}
+
+// Función para cerrar el popup de la imagen
+imagePopupCloseButton.addEventListener('click', function() {
+  imagePopup.classList.remove('image-popup_opened');
+  document.body.style.overflow = 'auto';
+});
 
 });
 

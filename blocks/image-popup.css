@@ -1,0 +1,143 @@
+.image-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.image-popup_opened {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.image-popup__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.image-popup__image {
+  max-width: 40vw;
+  max-height: 75vh;
+  width: auto;
+  height: auto;
+  border-radius: 10px;
+  object-fit: content;
+}
+
+.image-popup__title {
+  font-size: 14px;
+  font-family: "inter", Arial, Helvetica, sans-serif;
+  color: #fff;
+  margin-top: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.image-popup__close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+}
+
+.image-popup__close-btn:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 768px) {
+  .image-popup__content {
+    width: 90vw;
+    height: auto;
+    max-height: 70vh;
+  }
+
+  .image-popup__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .image-popup__title {
+    font-size: 14px;
+    padding: 10px;
+    left: 10px;
+  }
+
+  .image-popup__close-btn {
+    width: 24px;
+    height: 24px;
+    right: 20px;
+    top: 20px;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .image-popup__content {
+    width: 85vw;
+    height: auto;
+    max-height: 60vh;
+  }
+
+  .image-popup__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .image-popup__title {
+    font-size: 12px;
+    padding: 8px;
+    left: 8px;
+  }
+
+  .image-popup__close-btn {
+    width: 20px;
+    height: 20px;
+    right: 15px;
+    top: 15px;
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+  .image-popup__content {
+    width: 80vw;
+    height: auto;
+    max-height: 50vh;
+  }
+
+  .image-popup__image {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .image-popup__title {
+    font-size: 10px;
+    padding: 6px;
+    left: 6px;
+  }
+
+  .image-popup__close-btn {
+    width: 18px;
+    height: 18px;
+    right: 10px;
+    top: 10px;
+  }
+}
