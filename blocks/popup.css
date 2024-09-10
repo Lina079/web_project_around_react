@@ -146,7 +146,7 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
     width: 270px;
     height: 322px;
     overflow: visible;
-    top: 35%;
+    top: 50%;
   }
 
   .popup__close-btn{
