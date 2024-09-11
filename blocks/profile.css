@@ -29,7 +29,7 @@
   gap: 10px;
 }
 
-.profile__name-button {
+.profile__name-container {
   display: flex;
   flex-direction: row;
 }
@@ -39,7 +39,7 @@
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 42px;
   line-height: 48px;
-  font-weight: 500px;
+  font-weight: 500;
   color: #fff;
   padding: 0%;
   margin-bottom: 10px;
@@ -66,7 +66,7 @@
 
  .profile__description  {
   font-family: "inter", Arial, Helvetica, sans-serif;
-  font-weight: 415px;
+  font-weight: 400;
   font-size: 18px;
   line-height: 21.78px;
   color:#fff;

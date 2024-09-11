@@ -37,7 +37,7 @@
       />
      </div>
      <div class="profile__info">
-      <div class="profile__name profile__name-button">
+      <div class="profile__name-container profile__name-button">
       <h2 class="profile__name">Jackes Cousteau</h2>
       <button class="profile__editbutton" id="open-edit"></button>
      </div>
@@ -60,19 +60,19 @@
     <p class="popup__title">Editar perfil</p>
     <form class="popup__form" id="editform">
       <fieldset class="popup__fill-form">
-        <label for="name" class="popup__label-form"></label>
+        <label for="name" class="popup__label-name"></label>
         <input
         type="text"
-        class="poup__form-item popup__form-name"
+        class="popup__form-item-name popup__form-name"
         id="name"
         maxlength="20"
         placeholder="Nombre"
         required
         />
-        <div class="popup__line"></div>
-        <label for="about" class="popup__label-form"></label>
+        <div class="popup__line-about"></div>
+        <label for="about" class="popup__label-about"></label>
         <input
-        class="popup__form-item popup__form-about"
+        class="popup__form-item-about popup__form-about"
         type="text"
         id="about"
         name="about"
@@ -80,7 +80,7 @@
         placeholder="Acerca de mí"
         required
         />
-        <div class="popup__line"></div>
+        <div class="popup__line-profile"></div>
         <button type="submit" class="popup__form-btn" id="saveButton" disabled>Guardar</button>
       </fieldset>
       </form>
@@ -93,7 +93,7 @@
       <img
       class="popup__close-icon"
       src="./images/popoup/Close-Icon.svg"
-      alt="Close-Icon"
+      alt="icono de cierre"
       />
     </button>
     <p class="popup__title">Crea un nuevo lugar</p>
@@ -102,16 +102,16 @@
         <label for="name" class="popup__label-form" id="title-elements"></label>
         <input
         type="text"
-        class="poup__form-item popup__form-title"
+        class="popup__form-item-title popup__form-title"
         id="title"
         maxlength="20"
         placeholder="Nombre del lugar"
         required
         />
-        <div class="popup__line"></div>
+        <div class="popup__line-place"></div>
         <label for="about" class="popup__label-place" id="place-elements"></label>
         <input
-        class="popup__form-item popup__form-place"
+        class="popup__form-item-url popup__form-place"
         type="text"
         id="place"
         name="place"
@@ -119,7 +119,7 @@
         placeholder="Url de la imagen"
         required
         />
-        <div class="popup__line"></div>
+        <div class="popup__line-place-bottom"></div>
         <button type="submit" class="popup__form-btn" id="saveButton-elements" disabled>Crear</button>
       </fieldset>
       </form>
@@ -135,7 +135,7 @@
   </section>
   <template id="element-template">
     <div class="element__container">
-      <img src="./images/can_trash_icon2.png"
+      <img src="./images/can_trash_icon.png"
       alt="Trash Icon"
       class="element__trash-icon">
       <img

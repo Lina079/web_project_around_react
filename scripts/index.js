@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', function() {
   const popupElements = document.querySelector("#popup-elements");
   const backdrop = document.querySelector('.popup-backdrop');
   const backdropElements = document.querySelector(".popup-backdrop-elements");
-  const nameInput = document.getElementById('name');
-  const aboutInput = document.getElementById('about');
-  const titleInput = document.querySelector("#title");
-  const placeInput = document.querySelector("#place");
+  const nameInput = document.querySelector(".popup__form-item-name");
+  const aboutInput = document.querySelector(".popup__form-item-about");
+  const titleInput = document.querySelector(".popup__form-item-title");
+  const placeInput = document.querySelector(".popup__form-item-url");
   const saveButton = document.getElementById('saveButton');
   const saveButtonElements = document.querySelector("#saveButton-elements");
   const profileName = document.querySelector('.profile__name');

@@ -30,14 +30,12 @@
   width: 100%;
   height: 282px;
   object-fit: cover;
-  border-radius: 10px;
   cursor: pointer;
 }
 .element__photo{
   width: 100%;
   height: 282px;
   object-fit: cover;
-  border-radius: 10px;
   margin: 0px;
   padding: 0%;
 }
@@ -100,7 +98,7 @@
   height: 24px;
   z-index: 10;
   cursor: pointer;
-  background-image: url(../images/can_trash_icon2.png);
+  background-image: url(../images/can_trash_icon.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
