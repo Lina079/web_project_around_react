@@ -98,6 +98,7 @@ color: #c4c4c4;
 font-size: 14px;
 margin: 0 3%;
 text-overflow: ellipsis;
+overflow: hidden;
 }
 
 .popup__line-about{

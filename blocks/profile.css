@@ -35,7 +35,11 @@
 }
 
 .profile__name  {
+  display: block;
   max-height: 39px;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 42px;
   line-height: 48px;
