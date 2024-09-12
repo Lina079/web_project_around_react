@@ -121,11 +121,10 @@ overflow: hidden;
   height: 1px;
   background-color: #c4c4c4;
   width: 90%;
+  border-bottom: 1px solid #c4c4c4;
 }
 
-.popup__line-form-item-url {
-  border-bottom: 1px solid #fff;
-}
+
 
 .popup__form-btn {
   display: flex;

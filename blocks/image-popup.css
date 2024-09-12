@@ -12,7 +12,6 @@
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  overflow: hidden;
 }
 
 .image-popup_opened {
@@ -25,9 +24,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  max-width: 85vw;
-  max-height: 85vh;
-  overflow: hidden;
+  max-width: 75vw;
+  max-height: 75vh;
 }
 
 .image-popup__image {
@@ -41,12 +39,14 @@
 }
 
 .image-popup__title {
-  font-size: 14px;
+  font-size: 18px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   color: #fff;
   margin-top: 10px;
   text-align: left;
   width: 100%;
+  padding-left: 10px; /* Ajustamos el margen izquierdo */
+  padding-right: 10px; /* Ajustamos el margen derecho */
 }
 
 .image-popup__close-btn {
@@ -64,23 +64,25 @@
   opacity: 0.8;
 }
 
+/* Media Queries */
 @media screen and (max-width: 768px) {
   .image-popup__content {
-    width: 90vw;
+    width: 75vw;
     height: auto;
     max-height: 70vh;
   }
 
   .image-popup__image {
-    max-width: 100%;
+    max-width: 75vw;
     height: auto;
     object-fit: cover;
   }
 
   .image-popup__title {
     font-size: 14px;
-    padding: 4px 8px;
-    left: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 5px; /* Reduce el espacio entre la imagen y el título */
   }
 
   .image-popup__close-btn {
@@ -91,24 +93,24 @@
   }
 }
 
-
 @media screen and (max-width: 480px) {
   .image-popup__content {
-    width: 85vw;
+    width: 75vw;
     height: auto;
     max-height: 60vh;
   }
 
   .image-popup__image {
-    max-width: 100%;
+    max-width: 75vw;
     height: auto;
     object-fit: contain;
   }
 
   .image-popup__title {
     font-size: 12px;
-    padding: 8px;
-    left: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-top: 5px;
   }
 
   .image-popup__close-btn {
@@ -119,24 +121,24 @@
   }
 }
 
-
 @media screen and (max-width: 320px) {
   .image-popup__content {
-    width: 80vw;
+    width: 75vw;
     height: auto;
     max-height: 50vh;
   }
 
   .image-popup__image {
-    max-width: 100%;
+    max-width: 75vw;
     height: auto;
     object-fit: contain;
   }
 
   .image-popup__title {
     font-size: 10px;
-    padding: 6px;
-    left: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    margin-top: 5px;
   }
 
   .image-popup__close-btn {
@@ -146,3 +148,4 @@
     top: 10px;
   }
 }
+
