@@ -31,6 +31,7 @@
   height: 282px;
   object-fit: cover;
   cursor: pointer;
+  border-radius: 3%;
 }
 .element__photo{
   width: 100%;

@@ -17,6 +17,7 @@
   transition: opacity 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   pointer-events: none;
+  text-overflow: ellipsis;
 }
 
 .popup-backdrop, .popup-backdrop-elements {
@@ -120,6 +121,10 @@ overflow: hidden;
   height: 1px;
   background-color: #c4c4c4;
   width: 90%;
+}
+
+.popup__line-form-item-url {
+  border-bottom: 1px solid #fff;
 }
 
 .popup__form-btn {
