@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const imagePopupImage = document.querySelector('.image-popup__image');
   const imagePopupTitle = document.querySelector('.image-popup__title');
   const imagePopupCloseButton = document.querySelector('.image-popup__close-btn');
+  const imagePopupContent = document.querySelector('.image-popup__content');
+  const imagePopupBackdrop = document.querySelector('.image-popup');
 
   const initialElements = [
     {
@@ -76,19 +78,12 @@ document.addEventListener('DOMContentLoaded', function() {
   element.querySelector(".element__trash-icon").addEventListener('click', function () {
     const container = this.closest('.element__container');
     if (container) {
-      container.remove();  // Elimina el contenedor completo del DOM
+      container.remove();
     }
   });
 
-  elementArea.prepend(element);  // Añadimos el elemento al área de elementos
+  elementArea.prepend(element);
 }
-
-   //abrir y cerrar popups
-  function closePopup() {
-    popup.classList.remove('popup_opened');
-    document.querySelector('.popup-backdrop').classList.remove('backdrop_visible');
-    document.body.style.overflow = 'auto';
-  }
 
   //función que maneja los cambios del perfil
   function saveChanges(event){
@@ -111,24 +106,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //Evento para manejar el submit del formulario de perfil
   document.querySelector('#popup-form').addEventListener('submit', saveChanges);
-    openButton.addEventListener('click', function(){
+
+    openButton.addEventListener('click', function(event){
+    event.stopPropagation();
     popup.classList.add('popup_opened');
     document.querySelector('.popup-backdrop').classList.add('backdrop_visible');
     document.body.style.overflow = 'hidden';
   });
   closeButton.addEventListener('click', closePopup);
 
+
+//cerrar popup perfil
+function closePopup() {
+  popup.classList.remove('popup_opened');
+  document.querySelector('.popup-backdrop').classList.remove('backdrop_visible');
+  document.body.style.overflow = 'auto';
+}
+
+document.addEventListener('click', function(event) {
+  if (popup.classList.contains('popup_opened') && !popup.contains(event.target)) {
+      closePopup();
+  }
+});
+
+document.addEventListener('keydown', function(event){
+  if (event.key === 'Escape') {
+      closePopup();
+    }
+  });
+
+
 //Eventos para abrir y cerrar el popup de añadir nuevos elementos
-openAddButtonElements.addEventListener('click', function(){
+openAddButtonElements.addEventListener('click', function(event){
+  event.stopPropagation();
   popupElements.classList.add('popup_opened');
   backdropElements.classList.add('backdrop_visible');
   document.body.style.overflow = 'hidden';
 });
 
-closeAddButtonElements.addEventListener('click', function(){
+function closePopupElements() {
   popupElements.classList.remove('popup_opened');
   backdropElements.classList.remove('backdrop_visible');
-  document.body.style.overflow ='auto';
+  document.body.style.overflow = 'auto';
+}
+
+closeAddButtonElements.addEventListener('click', function() {
+  closePopupElements();
+});
+
+document.addEventListener('click', function(event) {
+  if (popupElements.classList.contains('popup_opened') && !popupElements.contains(event.target)) {
+      closePopupElements();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closePopupElements();
+    }
 });
 
 //activa el color en los inputs
@@ -180,9 +215,29 @@ function openImagePopup(link, name) {
 }
 
 // Función para cerrar el popup de la imagen
-imagePopupCloseButton.addEventListener('click', function() {
+function closeImagePopup() {
   imagePopup.classList.remove('image-popup_opened');
   document.body.style.overflow = 'auto';
+}
+
+imagePopupCloseButton.addEventListener('click', function(event) {
+  event.stopPropagation();
+  closeImagePopup();
+});
+
+
+document.addEventListener('click', function(event) {
+  if (imagePopup.classList.contains('image-popup_opened') &&
+      !imagePopupContent.contains(event.target) &&
+      !event.target.closest('.element__container-photo')) {
+    closeImagePopup();
+  }
+});
+
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') {
+    closeImagePopup();
+  }
 });
 
 });
