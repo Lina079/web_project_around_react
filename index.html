@@ -63,24 +63,30 @@
         <label for="name" class="popup__label-name"></label>
         <input
         type="text"
-        class="popup__form-item-name popup__form-name"
+        class="popup__form-item-name popup__form-input"
         id="name"
+        minlength="2"
         maxlength="20"
         placeholder="Nombre"
         required
         />
-        <div class="popup__line-about"></div>
+        <div class="popup__line"></div>
+        <span class="popup__form-input-error" id="name-error"></span>
+        </br>
         <label for="about" class="popup__label-about"></label>
         <input
-        class="popup__form-item-about popup__form-about"
+        class="popup__form-item-about popup__form-input"
         type="text"
         id="about"
         name="about"
-        maxlength="20"
+        minlength="2"
+        maxlength="200"
         placeholder="Acerca de mí"
         required
         />
-        <div class="popup__line-profile"></div>
+        <div class="popup__line"></div>
+        <span class="popup__form-input-error" id="about-error"></span>
+      </br>
         <button type="submit" class="popup__form-btn" id="saveButton" disabled>Guardar</button>
       </fieldset>
       </form>
@@ -102,24 +108,29 @@
         <label for="name" class="popup__label-form" id="title-elements"></label>
         <input
         type="text"
-        class="popup__form-item-title popup__form-title"
+        class="popup__form-item-title popup__form-input"
         id="title"
-        maxlength="20"
+        minlength="2"
+        maxlength="30"
         placeholder="Nombre del lugar"
         required
         />
-        <div class="popup__line-place"></div>
+        <div class="popup__line"></div>
+        <span class="popup__form-input-error" id="title-error"></span>
+        </br>
         <label for="about" class="popup__label-place" id="place-elements"></label>
         <input
-        class="popup__form-item-url popup__form-place"
-        type="text"
+        class="popup__form-item-url popup__form-input"
+        type="url"
         id="place"
         name="place"
-        maxlength="100"
         placeholder="Url de la imagen"
         required
         />
+        <div class="popup__line"></div>
+        <span class="popup__form-input-error" id="place-error"></span>
         <div class="popup__line-place-bottom"></div>
+        </br>
         <button type="submit" class="popup__form-btn" id="saveButton-elements" disabled>Crear</button>
       </fieldset>
       </form>
@@ -162,6 +173,7 @@
   </div>
 </div>
 <script src="./scripts/index.js"></script>
+<script src="./scripts/validate.js"></script>
 </body>
 </html>
 
