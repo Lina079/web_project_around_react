@@ -42,16 +42,22 @@ const checkInputValidity = (formElement, inputElement, settings) => {
     hideInputError(formElement, inputElement,settings);
   }
 
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  toggleButtonState(inputList, formElement.querySelector(settings.submitButtonSelector), settings);
+
 };
 
 const setEventListeners = (formElement, settings) => {
   const inputList = Array.from(
     formElement.querySelectorAll(settings.inputSelector));
+
+    const submitButton = formElement.querySelector(settings.submitButtonSelector);
+
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       inputElement.setCustomValidity("");
       checkInputValidity(formElement, inputElement, settings);
-      toggleButtonState(inputList, formElement.querySelector(settings.submitButtonSelector), settings);
+      toggleButtonState(inputList, submitButton, settings);
     });
   });
 };
@@ -59,22 +65,35 @@ const setEventListeners = (formElement, settings) => {
 const toggleButtonState = (inputList, buttonElement, settings) => {
   const hasInvalidInput = inputList.some(inputElement => !inputElement.validity.valid);
   if (hasInvalidInput) {
+    buttonElement.classList.remove('enabled');
     buttonElement.classList.add(settings.inactiveButtonClass);
     buttonElement.disabled = true;
   } else {
+    buttonElement.classList.add('enabled');
     buttonElement.classList.remove(settings.inactiveButtonClass);
     buttonElement.disabled = false;
   }
 };
 
+function updateButtonState(){
+  const isFormValid = titleInput.validty.valid && placeInput.validity.valid;
+  saveButtonElements.disabled = !isFormValid;
+  saveButtonElements.classList.toggle('enabled', isFormValid);
+};
+
 function enableValidation (settings){
   const formList = Array.from(document.querySelectorAll(settings.formSelector));
+
   formList.forEach((formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
+  const submitButton = formElement.querySelector(settings.submitButtonSelector);
+
     formElement.addEventListener("submit", function (evt) {
       evt.preventDefault();
     });
 
     setEventListeners(formElement, settings);
+    toggleButtonState(inputList, submitButton, settings);
     });
 };
 

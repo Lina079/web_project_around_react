@@ -98,11 +98,6 @@ document.addEventListener('DOMContentLoaded', function() {
   nameInput.addEventListener('input', updateButtonState);
   aboutInput.addEventListener('input', updateButtonState);
 
-  function updateButtonState(){
-    saveButton.disabled = !nameInput.value.trim() || !aboutInput.value.trim();
-    saveButton.classList.toggle('enabled', !saveButton.disabled);
-
-  }
 
   //Evento para manejar el submit del formulario de perfil
   document.querySelector('#popup-form').addEventListener('submit', saveChanges);
@@ -197,14 +192,7 @@ function addNewElements(event) {
 }
 document.querySelector('#editform-elements').addEventListener('submit', addNewElements);
 
-function updateCreateButtonState(){
-  const isFormValid = titleInput.value.trim() && placeInput.value.trim();
-  saveButtonElements.disabled = !isFormValid;
-  saveButtonElements.classList.toggle('enabled', isFormValid);
-}
 
-titleInput.addEventListener('input', updateCreateButtonState);
-placeInput.addEventListener('input', updateCreateButtonState);
 
 // Función para abrir el popup de la imagen del lugar
 function openImagePopup(link, name) {

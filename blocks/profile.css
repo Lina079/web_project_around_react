@@ -39,7 +39,7 @@
   max-height: 39px;
   white-space: nowrap;
   overflow: hidden;
-  max-width: 100%;
+  max-width: 380px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 42px;
   line-height: 48px;
@@ -134,7 +134,7 @@
 }
 
 .profile__name{
-  max-width: 220px;
+  max-width: 200px;
   max-height: 22px;
   font-weight: 500;
   font-size: 22px;

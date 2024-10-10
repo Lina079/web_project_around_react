@@ -200,13 +200,15 @@ input.with-border {
 }
 
 .popup__form-btn:disabled{
-  background-color: #000;
-  pointer-events: none;
+  background-color: #f0f0f0;
+  color:#c4c4c4;
+  cursor: not-allowed;
+  border: 1px solid #c4c4c4;
   opacity: 0.5;
 }
 
 .popup__form-btn.enabled {
-  background-color: #000;
+  background-color: black;
   color: #fff;
   cursor: pointer;
 }
