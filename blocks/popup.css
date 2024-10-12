@@ -223,7 +223,6 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
   .popup {
     width: 270px;
     height: 380px;
-    overflow: hidden;
     top: 50%;
   }
 
@@ -245,4 +244,13 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
     height: 46px;
     margin: 25px auto;
   }
+
+  .popup__close-btn{
+    width: 8px;
+    height: 8px;
+    top: -20px;
+    right: -3%;
+  }
+
+
 }
