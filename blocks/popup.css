@@ -222,29 +222,27 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
 @media screen and (max-width: 880px) {
   .popup {
     width: 270px;
-    height: 322px;
-    overflow: visible;
+    height: 380px;
+    overflow: hidden;
     top: 50%;
   }
 
-  .popup__close-btn{
-    width: 15px;
-    height: 15px;
-  }
-
-  .popup__title{
+  .popup__title {
     font-size: 18px;
-    margin: 25px 22px 76px;
+    margin: 25px 20px 20px;
+    text-align: left;
   }
 
-  .popup__form input[type="text"]{
+  .popup__form input[type="text"],
+  .popup__form input[type="url"] {
     font-size: 14px;
+    margin: 0 20px;
+    width: calc(100% - 40px);
   }
-
 
   .popup__form-btn {
-    width: 238px;
+    width: 230px;
     height: 46px;
-    margin-bottom: 25px;
+    margin: 25px auto;
   }
 }
