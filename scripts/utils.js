@@ -3,19 +3,23 @@ export function openPopup(popup, backdrop) {
   popup.classList.add('popup_opened');
   backdrop.classList.add('backdrop_visible');
   document.body.style.overflow = 'hidden';
-
-  // Añadir eventos de cierre al abrir el popup
   document.addEventListener('keydown', closePopupOnEscape);
   document.addEventListener('mousedown', closePopupOnClickOutside);
 }
 
-// Función para cerrar un popup y eliminar eventos de cierre
+
 export function closePopup(popup, backdrop) {
   popup.classList.remove('popup_opened');
   backdrop.classList.remove('backdrop_visible');
   document.body.style.overflow = 'auto';
+  document.removeEventListener('keydown', closePopupOnEscape);
+  document.removeEventListener('mousedown', closePopupOnClickOutside);
+}
 
-  // Eliminar eventos de cierre al cerrar el popup
+export function closePopupElements(popupElements, backdropElements) {
+  popupElements.classList.remove('popup_opened');
+  backdropElements.classList.remove('backdrop_visible');
+  document.body.style.overflow = 'auto';
   document.removeEventListener('keydown', closePopupOnEscape);
   document.removeEventListener('mousedown', closePopupOnClickOutside);
 }

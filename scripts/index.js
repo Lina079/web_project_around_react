@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (nameInput.value.trim() && aboutInput.value.trim()) {
     profileName.textContent = nameInput.value.trim();
     profileDescription.textContent = aboutInput.value.trim();
-    closePopup(popup);
+    closePopup(popup, backdrop);
     backdrop.classList.remove('backdrop_visible');
   }
 }
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       generateCard(newCardData);
       titleInput.value = '';
       placeInput.value = '';
-      closePopup(popupElements)
+      closePopup(popupElements, backdropElements)
       backdropElements.classList.remove('backdrop_visible');
     }
   });
