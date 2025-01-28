@@ -1,0 +1,19 @@
+{
+  "name": "tripleten",
+  "version": "0.0.1",
+  "description": "Educational platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lina079/web_project_around.git"
+  },
+  "author": "Lina Castro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lina079/web_project_around/issues"
+  },
+  "homepage": "https://github.com/Lina079/web_project_around#readme"
+}

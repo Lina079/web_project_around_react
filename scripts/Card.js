@@ -1,7 +1,7 @@
 export default class Card {
-  constructor(data, templateSelector, handleCardClick) {
-    this._name = data.name;
-    this._link = data.link;
+  constructor({ name, link }, templateSelector, handleCardClick) {
+    this._name = name;
+    this._link = link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -17,7 +17,7 @@ export default class Card {
   }
 
   _handleOpenImage() {
-    this._handleCardClick(this._link, this._name);
+    this._handleCardClick(this._name, this._link);
   }
 
   _handleDeleteCard(){
@@ -30,28 +30,46 @@ export default class Card {
     .classList.toggle('active');
   }
 
-  _setEventListeners(){
-    this._element.querySelector('.element__container-photo')
-    .addEventListener('click', () =>
-    {this._handleCardClick(this._link, this._name)});
-    this._element.querySelector('.element__trash-icon')
-    .addEventListener('click', () => {this._handleDeleteCard()});
-    this._element.querySelector('.heart-icon')
-    .addEventListener('click', () => {this._handleLikeCard()});
-  }
+ _setEventListeners() {
+  // Clic en la imagen para abrir popup
+  this._element
+    .querySelector('.element__container-photo')
+    .addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
+    });
+
+  // Clic en el ícono de basura para eliminar tarjeta
+  this._element
+    .querySelector('.element__trash-icon')
+    .addEventListener('click', () => {
+      this._handleDeleteCard();
+    });
+
+  // Clic en el ícono de corazón para dar "like"
+  this._element
+    .querySelector('.heart-icon')
+    .addEventListener('click', () => {
+      this._handleLikeCard();
+    });
+}
 
   generateCard (){
     this._element = this._getTemplate();
     this._element.querySelector('.element__container-name-place')
     .textContent = this._name;
-    this._element.querySelector('.element__container-photo').src = this._link;
-    this._element.querySelector('.element__container-photo').alt = this._name;
+
+    const photoElement = this._element.querySelector('.element__container-photo');
+    photoElement.src = this._link;
+    photoElement.alt = this._name;
 
     this._setEventListeners();
 
     return this._element;
   }
 }
+
+
+
 
 
 
