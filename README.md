@@ -5,43 +5,38 @@ Nombre del Proyecto:
 AROUND  THE U.S.
 
 Descripción del Proyecto y su Funcionalidad
+AROUND THE U.S. es una página web interactiva que permite a los usuarios explorar destinos emblemáticos a través de una galería de imágenes. La experiencia se enriquece con la posibilidad de interactuar de múltiples formas: los usuarios pueden editar su perfil, agregar nuevos lugares a la galería, marcar sus destinos favoritos con el icono de “me gusta”, eliminar tarjetas mediante una ventana de confirmación y actualizar su foto de perfil. Todo ello está integrado con un backend remoto, de manera que la información del usuario y las tarjetas se cargan y actualizan dinámicamente a través de una API.
 
-AROUND THE U.S. es una página web interactiva diseñada para mostrar algunos de los lugares más emblemáticos y fascinantes en este caso de Estados Unidos pero puede adaptarse a cualquier lugar del mundo. La página permite a los usuarios explorar diferentes destinos a través de una galería de imágenes, proporcionando información relevante sobre cada ubicación. Los usuarios también pueden interactuar con la página editando su perfil y marcando sus destinos favoritos, con solo un clic al corazón.
+Entre las mejoras implementadas se destacan:
 
-Funcionalidades Principales:
-
-1.	Galería de Lugares: Puedes tener una colección de imágenes de destinos populares en los EE.UU. o el lugar que prefieras con descripciones detalladas.
-2.	Perfil del Usuario: Una sección donde los usuarios pueden ver y editar su nombre y ocupación.
-3.	Interacción con Favoritos: Los usuarios pueden marcar sus lugares favoritos haciendo clic en el icono de corazón, que cambia de color para indicar la selección.
+Integración con la API: Se realizan solicitudes GET, POST, PATCH, PUT y DELETE para cargar y actualizar tanto la información del usuario como las tarjetas.
+Interfaz interactiva y responsive: Los popups se abren y cierran de manera fluida (incluyendo transiciones como “Guardando…” durante las solicitudes) y la página se adapta a distintas resoluciones.
+Experiencia de usuario mejorada: Al editar el perfil o actualizar el avatar, el botón muestra el estado “Guardando…” mientras se procesa la solicitud, mejorando la retroalimentación visual.
+Gestión de tarjetas: Los usuarios pueden agregar nuevas tarjetas, dar “me gusta” (con la actualización inmediata del icono), y eliminar tarjetas mediante una ventana emergente de confirmación para evitar borrados accidentales.
 
 Tecnologías y Técnicas Utilizadas
-
-AROUND THE U.S.  lo desarrolle utilizando las siguientes tecnologías y técnicas:
-
 Frontend:
 
-•	HTML: Para estructurar el contenido de la página de manera semántica y accesible.
+HTML: Estructura semántica y accesible del contenido.
 
-•	CSS: Para diseñar y estilizar la interfaz del usuario, incluyendo el uso de:
+CSS: Estilizado y diseño con metodología BEM. Se utilizan Flexbox y Grid Layout para lograr un diseño responsive y transiciones suaves para popups y elementos interactivos (como el cambio de color del icono de “me gusta”).
 
-*	Flexbox: Para una disposición flexible y responsiva de los elementos.
-*	Grid Layout: Para organizar la galería de imágenes y otros componentes de la página.
-*	Transiciones y Animaciones: Para mejorar la interactividad y la experiencia del usuario, como en el cambio de color del logo y el icono de corazón.
+JavaScript (ES6):
+Programación orientada a objetos, con clases separadas para cada componente (Card, Popup, PopupWithImage, PopupWithForm, PopupWithConfirmation, Api, UserInfoProject, FormValidator y Section).
 
-•	JavaScript : Para añadir interactividad y dinámica a la página, incluyendo:
-
-*	Manipulación del DOM: Para abrir y cerrar el popup de edición de perfil y para cambiar el color del icono de corazón cuando se marca como favorito.
-*	Event Listeners: Para manejar los eventos de clic y entrada del usuario.
-
+Integración con la API mediante fetch para cargar y actualizar datos.
+Manejo de eventos para la apertura y cierre de popups, validación de formularios y actualización dinámica del DOM.
 Herramientas de Desarrollo:
 
-•	Visual Studio Code: Como entorno de desarrollo integrado (IDE) para escribir y depurar el código.
-•	Git: Para control de versiones, permitiendo un seguimiento eficiente de los cambios en el código.
-•	GitHub: Para alojar el código fuente y colaborar en el desarrollo del proyecto.
+Visual Studio Code: IDE para escribir, formatear y depurar el código.
+
+Git y GitHub: Control de versiones y colaboración en el desarrollo del proyecto.
+
 
 Experiencia Personal
+Este proyecto representa un gran avance en mi carrera como desarrolladora web. AROUND THE U.S. me permitió integrar conceptos fundamentales de programación orientada a objetos y la interacción con una API real, además de afianzar mis conocimientos en HTML, CSS y JavaScript. Cada nueva funcionalidad –como la validación de formularios, la gestión de popups y la integración con el servidor– fue un desafío que me ayudó a crecer y a consolidar mis habilidades. La experiencia de ver el proyecto funcionar de forma interactiva y en tiempo real es realmente gratificante y me motiva a seguir avanzando en mi camino como desarrolladora.
 
-Este es el primer proyecto que elaboro usando JavaScript. Ha sido todo un reto pero al mismo tiempo ha sido muy satisfactorio poder llevar a cabo el proyecto y verlo en funcionamiento. Mi proceso como desarrolladora web sigue avanzando y cada vez consolido más mis conocimientos. Este proyecto ha sido una excelente oportunidad para poner en práctica lo que he aprendido y continuar creciendo en mi carrera como desarrolladora web.
+
 
 Sitio web del proyecto:
 
