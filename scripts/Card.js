@@ -1,9 +1,15 @@
 export default class Card {
-  constructor({ name, link }, templateSelector, handleCardClick) {
+  constructor({ name, link, _id, isLiked },
+    templateSelector, handleCardClick, handleLikeClick, handleCardDelete)
+    {
     this._name = name;
     this._link = link;
+    this._id = _id;
+    this.isLiked = isLiked;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._handleLikeClick = handleLikeClick;
+    this._handleCardDelete = handleCardDelete;
   }
 
   _getTemplate(){
@@ -25,11 +31,6 @@ export default class Card {
     this._element = null;
   }
 
-  _handleLikeCard() {
-    this._element.querySelector('.heart-icon')
-    .classList.toggle('active');
-  }
-
  _setEventListeners() {
   // Clic en la imagen para abrir popup
   this._element
@@ -42,14 +43,15 @@ export default class Card {
   this._element
     .querySelector('.element__trash-icon')
     .addEventListener('click', () => {
-      this._handleDeleteCard();
+      if (this._handleCardDelete) {
+        this._handleCardDelete(this._id, this);
+      }
     });
 
   // Clic en el ícono de corazón para dar "like"
-  this._element
-    .querySelector('.heart-icon')
+  this._element.querySelector('.heart-icon')
     .addEventListener('click', () => {
-      this._handleLikeCard();
+      this._handleLikeClick(this._id, this.isLiked, this);
     });
 }
 
@@ -57,6 +59,11 @@ export default class Card {
     this._element = this._getTemplate();
     this._element.querySelector('.element__container-name-place')
     .textContent = this._name;
+
+    if (this.isLiked){
+      this._element.querySelector('.heart-icon')
+      .classList.add('active');
+    }
 
     const photoElement = this._element.querySelector('.element__container-photo');
     photoElement.src = this._link;
@@ -66,10 +73,14 @@ export default class Card {
 
     return this._element;
   }
+
+  updateLikeState(isLiked) {
+    this.isLiked = isLiked;
+    const heartIcon = this._element.querySelector('.heart-icon');
+    if (this.isLiked) {
+      heartIcon.classList.add('active');
+    } else {
+      heartIcon.classList.remove('active');
+    }
+  }
 }
-
-
-
-
-
-
