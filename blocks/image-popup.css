@@ -1,14 +1,14 @@
 .image-popup {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 0%;
+  left: 0%;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 1002;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -17,6 +17,7 @@
 .image-popup_opened {
   opacity: 1;
   pointer-events: auto;
+  display: flex;
 }
 
 .image-popup__content {
@@ -63,6 +64,7 @@
 .image-popup__close-btn:hover {
   opacity: 0.8;
 }
+
 
 
 @media screen and (max-width: 520px) {

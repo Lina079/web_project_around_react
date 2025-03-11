@@ -18,6 +18,7 @@ open(name, link) {
 
   super.open();
 
+  this._popupElement.classList.remove('popup_opened');
   this._popupElement.classList.add('image-popup_opened');
   document.body.style.overflow = 'hidden';
 
