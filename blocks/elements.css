@@ -84,11 +84,11 @@
 
 .heart-icon {
   cursor: pointer;
-  background-image: url('../images/heart-vector.png');
+  background-image: url('/images/heart-vector.png');
 }
 
 .heart-icon.active {
-  content: url('../images/black-heart.png');
+  content: url('/images/black-heart.png');
 }
 
 .element__trash-icon {
@@ -99,7 +99,7 @@
   height: 24px;
   z-index: 10;
   cursor: pointer;
-  background-image: url(../images/can_trash_icon.png);
+  background-image: url(/images/can_trash_icon.png);
   background-size: contain;
   background-repeat: no-repeat;
 }
