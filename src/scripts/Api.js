@@ -39,7 +39,7 @@ export default class Api {
     })
     .then(resolve)
     .catch(reject);
-  }, 1000);
+  }, 500);
   });
   }
 
