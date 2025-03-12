@@ -44,8 +44,6 @@ _closePopupOnEscape(evt) {
 
 _closePopupOnClickOutside(evt) {
   const isInsidePopup = this._imageElement.contains(evt.target) || this._titleElement.contains(evt.target);
-  console.log('¿Clic dentro del popup?:', isInsidePopup);
-
   if (!isInsidePopup) {
     this.close();
   }

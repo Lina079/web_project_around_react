@@ -163,10 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const popupWithConfirmation = new PopupWithConfirmation("#popup-delete", () => {
-    console.log("boton confirm clickeado",popupWithConfirmation._cardId);
     api.deleteCard(popupWithConfirmation._cardId)
-    .then((deleteCardData) => {
-      console.log("Respuesta al eliminar",deleteCardData);
+    .then(() => {
       popupWithConfirmation._cardInstance._element.remove();
       popupWithConfirmation.close();
     })
@@ -178,10 +176,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const avatarPopup = new PopupWithForm({
     popupSelector: '#popup-avatar',
     handleFormSubmit: (formValues) => {
-      console.log('avatar actualizado =>',formValues.avatar);
       api.updateAvatar(formValues.avatar)
       .then((data) => {
-        console.log('avatar actualizado =>',data);
         userInfoProject.setUserInfoProject({
           nameSelector: data.name,
           aboutSelector: data.about,
@@ -195,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
   avatarPopup.setEventListeners();
 
   openAvatarButton.addEventListener('click', () => {
-    console.log("avatar clickeado");
     avatarPopup.open();
   });
 
