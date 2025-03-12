@@ -86,7 +86,7 @@
 }
 
 .profile__editbutton {
-  background: url(./image/Edit\ Button.png) no-repeat center;
+  background: url(../images/Edit\ Button.png) no-repeat center;
   background-size: 30px;
   width: 18px;
   height: 18px;
