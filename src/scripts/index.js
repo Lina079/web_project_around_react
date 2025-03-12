@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
           isLiked: false,
           });
           section.addItem(newCardElement);
+          addCardPopup.close();
           })
           .catch((err) => console.log(err));
         }
