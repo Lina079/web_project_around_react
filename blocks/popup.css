@@ -25,6 +25,8 @@ width: 100%;
 max-width: 430px;
 height: 380px;
 max-height: 380px;
+padding: 30px 36px 36px;
+box-sizing: border-box;
 }
 
 .popup-backdrop, .popup-backdrop-elements {
@@ -55,15 +57,17 @@ max-height: 380px;
   position: absolute;
   align-items: end;
   border: none;
-  top: -40px;
+  top: -38px;
   right: -3%;
   color: #fff;
   width: 15px;
   height: 15px;
-  background: transparent;
+  background-image: url('/images/popoup/Close-Icon.svg');
+  background-color: transparent;
   background-size: cover;
   cursor: pointer;
   background: no-repeat center;
+  z-index: 10;
 }
 
 .popup__close-btn:hover{
@@ -78,6 +82,7 @@ max-height: 380px;
   font-weight: 900;
   font-size: 24px;
   margin: 34px 64px 54px 36px;
+  text-align: center;
 }
 
 .popup__fill-form {
@@ -88,7 +93,8 @@ max-height: 380px;
 
 .popup__form-item{
   border:rgba(0, 0, 0, 0.1);
-  color: #c4c4c4
+  color: #c4c4c4;
+  margin-bottom: 20px;
 }
 
 .popup__form-item:valid {
@@ -177,22 +183,17 @@ input.with-border {
 }
 
 .popup__form-btn {
-  display: flex;
+  display: block;
   background-color: black;
   border-radius: 3%;
   width: 360px;
-  margin-left:3%;
-  margin-right: 0;
-  justify-content: center;
+  margin: 30px auto 50px;
   height: 50px;
-  margin-bottom: 50px;
-  margin-top: 30px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   color: #fff;
-  align-items: center;
   border: 2px solid #c4c4c4;
-  align-self: center;
+  text-align: center;
   padding: 0px;
   cursor: not-allowed;
 }
@@ -218,30 +219,19 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
 }
 
 
-.popup__container-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .popup__confirm-btn{
-  display: flex;
+  display: block;
   background-color:black;
   border-radius: 3%;
   width: 360px;
-  margin-left:3%;
-  margin-right: 0;
+  margin: 30px auto 50px;
   justify-content: center;
   height: 50px;
-  margin-bottom: 50px;
-  margin-top: 30px;
   font-family: "inter", Arial, Helvetica, sans-serif;
   font-size: 18px;
   color:#fff;
   align-items: center;
   border: 2px solid #c4c4c4;
-  align-self: center;
   padding: 0px;
   cursor: not-allowed;
 }
@@ -266,11 +256,21 @@ cursor: pointer;
 filter: drop-shadow(0 4px 4px #c4c4c4);
 }
 
+.popup__form {
+  display:block;
+  width: 100%;
+}
+
 @media screen and (max-width: 880px) {
   .popup {
     width: 270px;
     height: 380px;
     top: 50%;
+  }
+
+  .popup__content{
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .popup__title {
@@ -287,7 +287,7 @@ filter: drop-shadow(0 4px 4px #c4c4c4);
   }
 
   .popup__form-btn {
-    width: 230px;
+    width: 180px;
     height: 46px;
     margin: 25px auto;
   }
