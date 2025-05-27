@@ -27,10 +27,11 @@ height: 380px;
 max-height: 380px;
 padding: 30px 36px 36px;
 box-sizing: border-box;
+z-index: 1001;
+position: relative;
 }
 
 .popup-backdrop, .popup-backdrop-elements {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -143,7 +144,7 @@ width: 90%;
   margin: 0 3%;
   height: 1px;
   background-color: #c4c4c4;
-  width: 90%;
+  width: 95%;
   height: 10%;
   border-bottom: 1px solid #c4c4c4;
 }
@@ -186,7 +187,7 @@ input.with-border {
   display: block;
   background-color: black;
   border-radius: 3%;
-  width: 360px;
+  width: 330px;
   margin: 30px auto 50px;
   height: 50px;
   font-family: "inter", Arial, Helvetica, sans-serif;
@@ -196,6 +197,7 @@ input.with-border {
   text-align: center;
   padding: 0px;
   cursor: not-allowed;
+  align-self: center;
 }
 
 .popup__form-btn:disabled{

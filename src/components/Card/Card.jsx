@@ -1,5 +1,5 @@
 export default function Card({ card, onImageClick, onDelete }) {
-  const { name, link } = card;
+  const { name } = card;
   return (
     <div className="element__container">
       <img

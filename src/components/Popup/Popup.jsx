@@ -1,7 +1,9 @@
-import closeIcon from '../../../images/popoup/close-icon.svg';
+import closeIcon from '../../../images/popoup/Close-Icon.svg';
 
 export default function Popup({ title, children, onClose }) {
   return (
+    <>
+    <div className="popup-backdrop" onClick={onClose}></div>
     <div className="popup popup_opened">
       <div className="popup__container-form">
         <button
@@ -17,10 +19,10 @@ export default function Popup({ title, children, onClose }) {
             />
           </button>
       <h2 className="popup__title">{title}</h2>
-      <div className="popup__content">
-          {children}
-      </div>
+      <div className="popup__content">{children}</div>
     </div>
     </div>
+    </>
   );
 }
+

@@ -1,4 +1,5 @@
 import { useState} from 'react';
+import initialCards from '../../utils/cardsData';
 import Card from '../Card/Card';
 import NewCard from './components/NewCard/NewCard';
 import Popup from '../Popup/Popup';
@@ -8,42 +9,8 @@ import ImagePopup from './components/ImagePopup/ImagePopup';
 import EditAvatar from './components/EditAvatar/EditAvatar';
 import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
 
-
-
   export default function Main() {
-    const [cards, setCards] = useState ([
-    {
-    _id: "1",
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg"
-  },
-  {
-    _id: "2",
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg"
-  },
-  {
-    _id: "3",
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg"
-  },
-  {
-    _id: "4",
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg"
-  },
-  {
-    _id: "5",
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg"
-  },
-  {
-    _id: "6",
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
-  }
-  ]);
-
+    const [cards, setCards] = useState(initialCards);
     const [popup, setPopup] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [cardToDelete, setCardToDelete] = useState(null);
@@ -63,26 +30,6 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
     children: <EditAvatar />,
   };
 
-  function handleOpenPopup (popupContent) {
-    setPopup(popupContent);
-  }
-
-  function handleClosePopup() {
-    setPopup(null);
-  }
-
-  function handleImageClick(card) {
-    setSelectedImage(card);
-  }
-
-  function closeImagePopup() {
-    setSelectedImage(null);
-  }
-
-  function handleDeleteClick(card) {
-    setCardToDelete(card);
-  }
-
   function handleConfirmDelete(){
     setCards((prevCards) =>
       prevCards.filter((c) => c._id !== cardToDelete._id)
@@ -93,9 +40,9 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
   return (
     <main className="content page__section">
       <Profile
-        onEdit={() => handleOpenPopup(editProfilePopup)}
-        onAdd={() => handleOpenPopup(newCardPopup)}
-        onEditAvatar={() => handleOpenPopup(editAvatarPopup)}
+        onEdit={() => setPopup(editProfilePopup)}
+        onAdd={() => setPopup(newCardPopup)}
+        onEditAvatar={() => setPopup(editAvatarPopup)}
       />
 
       <section className="elements">
@@ -103,14 +50,14 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
         <Card
         key={index}
         card={card}
-        onImageClick={() => handleImageClick(card)}
-        onDelete={() => handleDeleteClick(card)}
+        onImageClick={setSelectedImage}
+        onDelete={() => setCardToDelete(card)}
         />
        ))}
       </section>
 
       {popup && (
-      <Popup onClose={handleClosePopup} title={popup.title}>
+      <Popup onClose={() => setPopup(null)} title={popup.title}>
       {popup.children}
       </Popup>
     )}
@@ -118,7 +65,7 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
         <ImagePopup
           link={selectedImage.link}
           name={selectedImage.name}
-          onClose={closeImagePopup}
+          onClose={() => setSelectedImage(null)}
         />
       )}
       {cardToDelete && (
@@ -129,6 +76,7 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
       </main>
   );
 }
+
 
 
 

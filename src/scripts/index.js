@@ -118,10 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return card.generateCard();
   }
 
-   // Función que maneja el clic en una tarjeta (abre la imagen)
+   /* Función que maneja el clic en una tarjeta (abre la imagen)
    function handleCardClick(name, link) {
     popupWithImage.open(name, link);
-  }
+  }*/
 
   const editProfilePopup = new PopupWithForm({
     popupSelector: '#popup-form',
