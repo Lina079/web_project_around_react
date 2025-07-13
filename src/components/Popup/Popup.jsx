@@ -1,6 +1,8 @@
 import closeIcon from '../../../images/popoup/Close-Icon.svg';
 
 export default function Popup({ title, children, onClose }) {
+
+
   return (
     <>
     <div className="popup-backdrop" onClick={onClose}></div>

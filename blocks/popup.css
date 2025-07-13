@@ -159,6 +159,16 @@ input.with-border {
   border-bottom: none;
 }
 
+.popup__form-item name,
+.popup__form-item about {
+  color: #c4c4c4;
+}
+
+.popup__form-item-name.filled,
+.popup__form-item-about.filled {
+  color:#000;
+}
+
 .popup__form-input-error {
   display: block;
   font-family: "Inter", Arial, Helvetica, sans-serif;

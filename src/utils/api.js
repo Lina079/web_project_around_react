@@ -23,7 +23,7 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  setUserInfo({ name, about}) {
+  updateUserInfo({ name, about}) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
@@ -61,6 +61,8 @@ class Api {
     }).then(this._handleResponse);
   }
 }
+
+
 
 const api = new Api("https://around-api.es.tripleten-services.com/v1", {
       authorization: "6f3b5cfb-f567-4462-befe-fb5c9c2b0d52",

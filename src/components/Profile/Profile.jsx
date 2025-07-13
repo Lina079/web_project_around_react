@@ -1,12 +1,16 @@
+import { useContext } from 'react';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import avatar from '../../../images/Avatar.png';
 import pencil from '../../../images/Pencil.svg';
 
 export default function Profile({ onEdit, onAdd, onEditAvatar}) {
+  const { currentUser } = useContext(CurrentUserContext);
+
   return (
     <section className="profile">
         <div className="profile__avatar" onClick={onEditAvatar}>
           <img
-          src={avatar}
+          src={currentUser?.avatar || avatar}
           alt="Avatar del usuario"
           className="profile__avatar-image" />
           <img
@@ -17,7 +21,7 @@ export default function Profile({ onEdit, onAdd, onEditAvatar}) {
 
         <div className="profile__info">
           <div className="profile__name-container">
-          <h1 className="profile__name">Jacques Cousteau</h1>
+          <h1 className="profile__name">{currentUser?.name}</h1>
           <button
           className="profile__editbutton"
           type="button"
@@ -25,7 +29,7 @@ export default function Profile({ onEdit, onAdd, onEditAvatar}) {
           onClick={onEdit}
           />
         </div>
-        <p className="profile__description">Explorador</p>
+        <p className="profile__description">{currentUser?.about}</p>
         </div>
 
         <button
@@ -39,4 +43,5 @@ export default function Profile({ onEdit, onAdd, onEditAvatar}) {
       </section>
   )
 }
+
 
