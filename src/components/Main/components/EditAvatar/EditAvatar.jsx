@@ -1,28 +1,28 @@
-import { useState, useEffect, useContext, use } from 'react';
+import { useState, useEffect, useContext, useRef } from 'react';
 import { CurrentUserContext } from '../../../../contexts/CurrentUserContext';
 
 export default function EditAvatar({ onUpdateAvatar, onClose }) {
-  const currentUser = useContext(CurrentUserContext);
-  const [avatar, setAvatar] = useState('');
+  const { currentUser } = useContext(CurrentUserContext);
+  const avatarRef = useRef(null);
   const [avatarError, setAvatarError] = useState('');
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-   setAvatar('');
+   if (avatarRef.current) {
+     avatarRef.current.value = '';
+    }
     setAvatarError('');
+    setIsValid(false);
   }, []);
 
-  useEffect(() => {
-    setIsValid(
-      avatar.trim() !== '' &&
-      !avatarError
-    );
-  }, [avatar, avatarError]);
-
   function handleAvatarChange(e) {
-    setAvatar(e.target.value);
-    setAvatarError(e.target.validationMessage);
+    const errorMsg = e.target.validationMessage;
+    setAvatarError(errorMsg);
+
+    const value = e.target.value.trim();
+
+    setIsValid(value !== '' && !errorMsg);
   }
 
   async function handleSubmit(e) {
@@ -30,7 +30,7 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
     if (!isValid || isLoading) return;
     setIsLoading(true);
     try {
-      await onUpdateAvatar({ avatar: avatar.trim() });
+      await onUpdateAvatar({ avatar: avatarRef.current.value.trim() });
       onClose();
     } catch (error) {
       console.error('Error al actualizar el avatar:', error);
@@ -54,7 +54,7 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
           name="avatar"
           placeholder="URL de la imagen"
           type="url"
-          value={avatar}
+          ref={avatarRef}
           onChange={handleAvatarChange}
           required
           disabled={isLoading}
