@@ -11,6 +11,7 @@ import '../../index.css';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     api.getUserInfo()
@@ -20,10 +21,18 @@ function App() {
       .catch(error => {
         console.error("Error al cargar la info del usuario:", error);
       });
+
+    api.getCardList()
+      .then(cardsData => {
+        setCards(cardsData);
+      })
+      .catch(error => {
+        console.error("Error al cargar las tarjetas:", error);
+      });
   }, []);
 
-  function handleUpdateUser(data) {
-    api.updateUserInfo(data)
+  function handleUpdateUser({name, about}) {
+    api.updateUserInfo({name, about})
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
       })
@@ -32,12 +41,60 @@ function App() {
       });
       }
 
+  function handleUpdateAvatar({ avatar }) {
+    api.setUserAvatar({ avatar })
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+      })
+      .catch((error) => {
+        console.error('Error al actualizar el avatar:', error);
+      });
+  }
+
+  function handleAddCard({ name, link }) {
+    api.addCard({ name, link })
+      .then((newCard) => {
+        setCards((prev) => [newCard, ...prev]);
+      })
+      .catch((error) => {
+        console.error('Error al agregar la tarjeta:', error);
+      });
+  }
+
+  function handleCardLike(card) {
+    api.changeLikeCardStatus(card._id, !card.isLiked)
+      .then((updatedCard) => {
+        setCards((prev) =>
+          prev.map((c) => (c._id === updatedCard._id ? updatedCard : c))
+        );
+      })
+      .catch((error) => {
+        console.error('Error al cambiar el estado de like:', error);
+      });
+  }
+  function handleCardDelete(card) {
+    api.deleteCard(card._id)
+      .then(() => {
+        setCards((prev) => prev.filter((c) => c._id !== card._id));
+      })
+      .catch((error) => {
+        console.error('Error al eliminar la tarjeta:', error);
+      });
+  }
+
+
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <div className="page">
         <Header />
         <main className="page__content">
-        <Main onUpdateUser={handleUpdateUser} />
+        <Main
+        cards={cards}
+        onUpdateUser={handleUpdateUser}
+        onUpdateAvatar={handleUpdateAvatar}
+        onAddCard={handleAddCard}
+        onCardLike={handleCardLike}
+        onCardDelete={handleCardDelete} />
         </main>
         <Footer />
       </div>

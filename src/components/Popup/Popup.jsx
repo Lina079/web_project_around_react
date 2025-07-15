@@ -1,6 +1,17 @@
 import closeIcon from '../../../images/popoup/Close-Icon.svg';
+import React, { useEffect } from 'react';
 
 export default function Popup({ title, children, onClose }) {
+
+  useEffect(() => {
+    function handleEscape(event) {
+      if (event.key === 'Escape') onClose();
+    }
+    document.addEventListener('keydown', handleEscape);
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+    };
+  }, [onClose]);
 
 
   return (
