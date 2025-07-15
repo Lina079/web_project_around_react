@@ -216,7 +216,7 @@ input.with-border {
   align-self: center;
 }
 
-.popup__form-btn:disabled{
+.popup__form-btn.popup__form-btn_loading:disabled {
   background-color: black;
   color:#c4c4c4;
   cursor: not-allowed;

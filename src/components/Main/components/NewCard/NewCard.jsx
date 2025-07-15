@@ -6,6 +6,7 @@ export default function NewCard({ onAddCard, onClose }) {
   const [nameError, setNameError] = useState('');
   const [linkError, setLinkError] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsValid(
@@ -27,14 +28,22 @@ export default function NewCard({ onAddCard, onClose }) {
     setLinkError(e.target.validationMessage);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!isValid) return;
-    onAddCard({ name: name.trim(), link: link.trim() });
-    onClose();
+    if (!isValid || isLoading) return;
+    setIsLoading(true);
+    try {
+      await onAddCard({name: name.trim(), link: link.trim()});
+      onClose();
+  } catch (error) {
+      console.error('Error al agregar la tarjeta:', error);
+    } finally {
+      setIsLoading(false);
+    }
     setName('');
     setLink('');
   }
+
 
   return (
     <form
@@ -54,6 +63,7 @@ export default function NewCard({ onAddCard, onClose }) {
             required
             minLength="2"
             maxLength="30"
+            disabled={isLoading}
           />
           <div className="popup__line"></div>
           <span className="popup__form-input-error" id="name-error">{nameError}</span>
@@ -68,6 +78,7 @@ export default function NewCard({ onAddCard, onClose }) {
             value={link}
             onChange={handleLinkChange}
             required
+            disabled={isLoading}
           />
           <div className="popup__line"></div>
           <span className="popup__form-input-error" id="link-error">{linkError}</span>
@@ -75,9 +86,9 @@ export default function NewCard({ onAddCard, onClose }) {
 
         <button
         type="submit"
-        className="popup__form-btn"
-        disabled={!isValid}>
-          {isValid ? 'Crear' : 'Completa los campos'}
+        className={`popup__form-btn${isLoading ? ' popup__form-btn_loading' : ''}`}
+        disabled={!isValid || isLoading}>
+          {isLoading ? 'Creando...' : 'Crear'}
         </button>
       </form>
   );

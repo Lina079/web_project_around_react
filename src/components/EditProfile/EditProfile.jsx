@@ -8,6 +8,7 @@ const [about, setAbout] = useState('');
 const [nameError, setNameError] = useState('');
 const [aboutError, setAboutError] = useState('');
 const [isValid, setIsValid] = useState(false);
+const [isLoading, setIsLoading] = useState(false);
 
 /*useEffect(() => {
   setName(currentUser.name || '');
@@ -37,11 +38,18 @@ function handleAboutChange(e) {
   setAboutError(e.target.validationMessage);
 }
 
-function handleSubmit(e) {
+async function handleSubmit(e) {
   e.preventDefault();
-  if (!isValid) return;
-  onUpdateUser({ name: name.trim(), about: about.trim() });
-  onClose();
+  if (!isValid || isLoading) return;
+  setIsLoading(true);
+  try {
+    await onUpdateUser({name: name.trim(), about: about.trim()});
+    onClose();
+  } catch (error) {
+    console.error('Error updating user:', error);
+  }
+  finally {
+    setIsLoading(false);}
 }
 
   return (
@@ -64,6 +72,7 @@ function handleSubmit(e) {
         type="text"
         value={name}
         onChange={handleNameChange}
+        disabled={isLoading}
       />
       <div className="popup__line"></div>
       <span className="popup__form-input-error" id="name-error">{nameError}</span>
@@ -81,6 +90,7 @@ function handleSubmit(e) {
         type="text"
         value={about}
         onChange={handleAboutChange}
+        disabled={isLoading}
       />
       <div className="popup__line"></div>
       <span className="popup__form-input-error" id="description-error">{aboutError}</span>
@@ -89,8 +99,8 @@ function handleSubmit(e) {
     <button
       className="popup__form-btn"
       type="submit"
-      disabled={!isValid}>
-        {isValid ? 'Guardar' : 'Completa los campos'}
+      disabled={!isValid || isLoading}>
+        {isLoading ? 'Guardando...' : 'Guardar'}
       </button>
     </form>
   );

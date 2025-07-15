@@ -32,32 +32,39 @@ function App() {
   }, []);
 
   function handleUpdateUser({name, about}) {
-    api.updateUserInfo({name, about})
+    return api.updateUserInfo({name, about})
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
+        return updatedUser;
       })
       .catch((error) => {
-        console.error("Error al actualizar la info del usuario:", error);
+        console.error
+        ("Error al actualizar la info del usuario:", error);
+        throw error;
       });
       }
 
   function handleUpdateAvatar({ avatar }) {
-    api.setUserAvatar({ avatar })
+    return api.setUserAvatar({ avatar })
       .then((updatedUser) => {
         setCurrentUser(updatedUser);
+        return updatedUser;
       })
       .catch((error) => {
         console.error('Error al actualizar el avatar:', error);
+        throw error;
       });
   }
 
   function handleAddCard({ name, link }) {
-    api.addCard({ name, link })
+    return api.addCard({ name, link })
       .then((newCard) => {
         setCards((prev) => [newCard, ...prev]);
+        return newCard;
       })
       .catch((error) => {
         console.error('Error al agregar la tarjeta:', error);
+        throw error;
       });
   }
 

@@ -17,7 +17,7 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
     onAddCard,
     onCardLike,
     onCardDelete }) {
-    console.log('Cards in Main:', cards);
+
     const [popup, setPopup] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [cardToDelete, setCardToDelete] = useState(null);
@@ -28,11 +28,12 @@ import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
     title: 'Nuevo lugar',
     children: (
       <NewCard
-        onAddCard={(cardData) => {
-          onAddCard(cardData);
-          setPopup(null);
-        }}
-        />
+        onAddCard={(cardData) =>
+          onAddCard(cardData)
+          .then(() => setPopup(null))
+        }
+        onClose={() => setPopup(null)}
+      />
     )
     };
 

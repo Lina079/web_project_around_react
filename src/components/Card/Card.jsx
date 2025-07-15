@@ -6,7 +6,7 @@ export default function Card({ card, isLiked, onImageClick, onDelete, onLike }) 
   const {name} = card;
 
   const cardLikeButtonClassName = `card__like-button${isLiked ? ' card__like-button_is-active' : ''}`;
-  console.log("like button classes:", cardLikeButtonClassName);
+
 
   function handleLikeClick() {
     onLike(card);

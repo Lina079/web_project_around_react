@@ -6,6 +6,7 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
   const [avatar, setAvatar] = useState('');
   const [avatarError, setAvatarError] = useState('');
   const [isValid, setIsValid] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
    setAvatar('');
@@ -24,11 +25,18 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
     setAvatarError(e.target.validationMessage);
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
-    if (!isValid) return;
-    onUpdateAvatar({ avatar: avatar.trim() });
-    onClose();
+    if (!isValid || isLoading) return;
+    setIsLoading(true);
+    try {
+      await onUpdateAvatar({ avatar: avatar.trim() });
+      onClose();
+    } catch (error) {
+      console.error('Error al actualizar el avatar:', error);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -49,6 +57,7 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
           value={avatar}
           onChange={handleAvatarChange}
           required
+          disabled={isLoading}
         />
         <div className="popup__line"></div>
         <span className="popup__form-input-error" id="avatar-error">{avatarError}</span>
@@ -56,11 +65,10 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
       <button
       type="submit"
       className="popup__form-btn"
-      disabled={!isValid}>
-      {isValid ? 'Guardar' : 'Escribe una URL válida'}
+      disabled={!isValid || isLoading}>
+      {isLoading ? 'Guardando...' : 'Guardar'}
       </button>
     </form>
   );
-
 }
 
