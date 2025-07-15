@@ -75,8 +75,8 @@
 .element__container-heart{
   display: flex;
   flex-direction: row;
+  align-self: flex-end;
   align-self: center;
-  align-self: self-end;
   margin-top: 25px;
 
   max-width: 21px;
@@ -86,7 +86,8 @@
 
 }
 
-.heart-icon {
+  .card__like-button {
+  all: unset;
   cursor: pointer;
   background-image: url('/images/heart-vector.png');
   background-size: contain;
@@ -97,8 +98,8 @@
   background-position: center;
 }
 
-.heart-icon.active {
-  content: url('/images/black-heart.png');
+.card__like-button_is-active {
+  background-image: url('/images/black-heart.png');
 }
 
 .element__trash-icon {

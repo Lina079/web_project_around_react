@@ -1,12 +1,12 @@
-import { useState, useEffect, useContext} from 'react';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import  { useState, useEffect, useContext} from 'react';
 import Card from '../Card/Card';
 import NewCard from './components/NewCard/NewCard';
 import Popup from '../Popup/Popup';
 import Profile from '../Profile/Profile';
 import EditProfile from '../EditProfile/EditProfile';
 import ImagePopup from './components/ImagePopup/ImagePopup';
-import EditAvatar from '../EditAvatar/EditAvatar';
+import EditAvatar from './components/EditAvatar/EditAvatar';
 import ConfirmDelete from './components/ConfirmDelete/ConfirmDelete';
 import api from '../../utils/api';
 
@@ -29,8 +29,8 @@ import api from '../../utils/api';
 
     const newCardPopup = {
     title: 'Nuevo lugar',
-    children: <NewCard />,
-  };
+    children: <NewCard onAddCard={handleAddCard} />
+    };
 
   const editProfilePopup = {
   title: 'Editar perfil',
@@ -49,6 +49,32 @@ import api from '../../utils/api';
      />
   ),
   };
+
+  function handleAddCard({ name, link}) {
+    api.addCard({ name, link })
+      .then((newCard) => {
+        setCards((prevCards) => [newCard, ...prevCards]);
+        setPopup(null);
+      })
+      .catch((error) => {
+        console.error('Error al agregar la tarjeta:', error);
+      });
+  };
+
+
+async function handleCardLike(card) {
+  try {
+    const updatedCard = await api.changeLikeCardStatus(card._id, !card.isLiked);
+    setCards((prev) =>
+      prev.map((c) =>
+        c._id === updatedCard._id ? updatedCard : c
+      )
+    );
+  } catch (error) {
+    console.error('Error al cambiar el estado de like de la tarjeta:', error);
+  }
+}
+
 
   function handleConfirmDelete(){
     setCards((prevCards) =>
@@ -78,12 +104,15 @@ import api from '../../utils/api';
       <section className="elements">
        {cards.map((card) => (
         <Card
-        key={card._id}
-        card={card}
-        onImageClick={setSelectedImage}
-        onDelete={() => setCardToDelete(card)}
+          key={card._id}
+          card={card}
+          isLiked={card.isLiked}
+          onImageClick={setSelectedImage}
+          onDelete={() => setCardToDelete(card)}
+          onLike={handleCardLike}
         />
        ))}
+
       </section>
 
       {popup && (
@@ -106,9 +135,3 @@ import api from '../../utils/api';
       </main>
   );
 }
-
-
-
-
-
-
