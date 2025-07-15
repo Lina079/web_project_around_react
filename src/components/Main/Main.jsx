@@ -77,10 +77,16 @@ async function handleCardLike(card) {
 
 
   function handleConfirmDelete(){
-    setCards((prevCards) =>
-      prevCards.filter((c) => c._id !== cardToDelete._id)
-    );
-    setCardToDelete(null);
+    api.deleteCard(cardToDelete._id)
+      .then(() => {
+        setCards((prevCards) =>
+          prevCards.filter((c) => c._id !== cardToDelete._id)
+        );
+        setCardToDelete(null);
+      })
+      .catch((error) => {
+        console.error('Error al eliminar la tarjeta:', error);
+      });
   };
 
   function handleUpdateAvatar({ avatar }) {
