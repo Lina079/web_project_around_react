@@ -1,20 +1,33 @@
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, use } from 'react';
 import { CurrentUserContext } from '../../../../contexts/CurrentUserContext';
 
 export default function EditAvatar({ onUpdateAvatar, onClose }) {
   const currentUser = useContext(CurrentUserContext);
   const [avatar, setAvatar] = useState('');
+  const [avatarError, setAvatarError] = useState('');
+  const [isValid, setIsValid] = useState(false);
 
   useEffect(() => {
-    setAvatar(currentUser.avatar || '');
-  }, [currentUser]);
+   setAvatar('');
+    setAvatarError('');
+  }, []);
+
+  useEffect(() => {
+    setIsValid(
+      avatar.trim() !== '' &&
+      !avatarError
+    );
+  }, [avatar, avatarError]);
+
+  function handleAvatarChange(e) {
+    setAvatar(e.target.value);
+    setAvatarError(e.target.validationMessage);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log('Avatar URL:', avatar);
-    onUpdateAvatar({
-      avatar
-    });
+    if (!isValid) return;
+    onUpdateAvatar({ avatar: avatar.trim() });
     onClose();
   }
 
@@ -34,16 +47,20 @@ export default function EditAvatar({ onUpdateAvatar, onClose }) {
           placeholder="URL de la imagen"
           type="url"
           value={avatar}
-          onChange={(e) => setAvatar(e.target.value)}
+          onChange={handleAvatarChange}
           required
         />
         <div className="popup__line"></div>
-        <span className="popup__form-input-error" id="avatar-error"></span>
+        <span className="popup__form-input-error" id="avatar-error">{avatarError}</span>
       </div>
-      <button type="submit" className="popup__form-btn">
-        Guardar
+      <button
+      type="submit"
+      className="popup__form-btn"
+      disabled={!isValid}>
+      {isValid ? 'Guardar' : 'Escribe una URL válida'}
       </button>
     </form>
   );
+
 }
 
