@@ -140,6 +140,12 @@ width: 90%;
 }
 
 
+.popup__form-item-input:focus,
+.popup__form-item-input:not(:placeholder-shown) {
+  color: #000 !important;
+}
+
+
 .popup__line {
   margin: 0 3%;
   height: 1px;
