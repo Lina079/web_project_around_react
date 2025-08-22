@@ -1,94 +1,108 @@
-Alrededor de los EE. UU. (React)
-Repositorio: https://github.com/Lina079/web_project_around_react
+# Around (React) — Galería social con perfil (React + Vite + REST API)
 
-Una SPA en React que consume una API REST para explorar, crear, editar y eliminar tarjetas de lugares “alrededor de los Estados Unidos”.
+**Demo:** https://lina079.github.io/web_project_around_react/  
+**Stack:** React · Vite · CSS · Context API · Fetch/REST · ESLint · GitHub Pages
 
-🖥️ Visión general
-Galería de tarjetas con imagen y nombre de cada lugar.
+## 🧭 Resumen para reclutadores (60 segundos)
+Aplicación tipo “galería social” donde el usuario:
+- Edita su **perfil** (nombre, bio, avatar)
+- **Crea** y **elimina** tarjetas con imagen y título
+- **Da o quita likes** a las tarjetas
+- Interactúa con **modales** (formularios y confirmaciones) con validación
 
-Funcionalidad de dar “like”, eliminar o ampliar la foto.
-
-Formularios para añadir nuevas tarjetas, editar perfil (nombre y descripción) y cambiar avatar (URL).
-
-Sincronización en tiempo real con el servidor mediante llamadas a la API.
-
-✨ Características
-1. Carga inicial
-
-* Obtiene usuario y lista de tarjetas al   iniciar la app.
-
-2. Contexto de usuario
-
-* CurrentUserContext para compartir datos de currentUser en toda la aplicación.
-
-3. CRUD de tarjetas
-
-* GET /cards
-
-* POST /cards (añadir con loader “Creando…”)
-
-* DELETE /cards/:id (confirmación en popup)
-
-* PUT/DELETE /cards/:id/likes (toggle “like”)
-
-4. Formularios controlados y con validación
-
-* Mensajes de error en línea (validationMessage).
-
-* Indicadores de carga: “Creando…”, “Guardando…”.
-
-5. Editar perfil
-
-* Popup con campos Nombre y Acerca de mí, validación de longitud, loader “Guardando…”.
-
-6. Editar avatar
-
-* Input de URL gestionado con useRef, validación nativa, loader “Guardando…”, campo limpio al abrir.
-
-7. Popups accesibles (Popup.jsx y ImagePopup.jsx)
-
-* Cierre por botón “×”, tecla Esc y click en backdrop.
-
-* Reutilizables para todos los modales.
-
- 🛠️ Tecnologías, herramientas y lenguajes
-
-- **Entorno de desarrollo**  
-  - Node.js (v14+) & npm / Yarn  
-  - Vite (bundler rápido)  
-  - Git / GitHub para control de versiones  
-  - Visual Studio Code (IDE)  
-  - Chrome DevTools (depuración y Network Throttling)  
-- **Lenguajes**  
-  - JavaScript (ES6+)  
-  - HTML5 (JSX)  
-  - CSS3 (Grid, Flexbox, media queries)  
-- **Librerías y dependencias**  
-  - React 18  
-  - React DOM  
-  - (Opcional) PropTypes  
-  - Prettier / ESLint para estilo de código  
-
-  ## 🎣 Hooks de React usados
-
-- **useState**  
-  Para gestionar estado local en cada formulario, listas de tarjetas, loaders, errores…  
-- **useEffect**  
-  Para llamadas a la API al montar, validación en tiempo real y capturar eventos de teclado.  
-- **useContext**  
-  Para compartir `currentUser` y su actualización sin “prop drilling”.  
-- **useRef**  
-  Para leer directamente el valor del input de avatar y optimizar formularios sin estado controlado.  
+**Qué demuestra este proyecto**  
+Integración con **REST API** (GET/POST/PUT/PATCH/DELETE), gestión de estado con **hooks** y **Context**, componentes reutilizables y deploy con **Vite + GitHub Pages**.
 
 ---
 
- 🚀 Instalación y ejecución
+## ✨ Funcionalidades
+- **Perfil:** edición de datos y avatar.
+- **Tarjetas (cards):** listar, crear, eliminar, like/unlike.
+- **Modales accesibles:** apertura/cierre, focus manejado, validación básica.
+- **Validación de formularios** con feedback visual.
+- **Consumo de API** con manejo de errores y sincronización de estado.
+- **Responsive** (mobile-first).
 
-1. Clona el repositorio:  
-   ```bash
-   git clone https://github.com/Lina079/web_project_around_react.git
-   cd web_project_around_react
+> **API de práctica** (endpoints tipo `me`, `cards`, etc. de TripleTen).
+
+---
+
+## 🧱 Arquitectura & decisiones
+- **React + Vite**: DX rápida y build eficiente.  
+- **Context API** para compartir el usuario actual.  
+- **Componentes desacoplados** (`Card`, `Popup`, `EditProfile`, `ConfirmDelete`, etc.).  
+- **ESLint** para estilo y calidad.  
+- **Rutas y assets compatibles con GitHub Pages** (config `base`).
+
+**Estructura (resumen)**
+src/
+components/
+Card/
+Header/
+Profile/
+Popup/
+...
+contexts/
+CurrentUserContext.js
+utils/
+api.js # capa de acceso a la API (fetch)
+styles/
+index.css
+public/
+vite.config.js
 
 
-© 2025 Lina Castro Rodríguez
+---
 
+## 🛠️ Tecnologías
+- **React 18/19**, **Vite**
+- **Context API**, **Hooks**
+- **Fetch / REST API**
+- **CSS (responsive)**
+- **GitHub Pages**
+
+---
+
+## 🚀 Ejecutar en local
+```bash
+git clone https://github.com/Lina079/web_project_around_react.git
+cd web_project_around_react
+npm install
+npm run dev
+# abre la URL que muestra Vite (p. ej. http://localhost:5173)
+```
+```
+npm run build
+npm run deploy   # publica dist/ a la rama gh-pages
+```
+
+La app está configurada con base: '/web_project_around_react/' para funcionar en GitHub Pages.
+
+---
+
+### 🔍 Lo que aprendí
+
+- Conectar un frontend React a una REST API con CRUD.
+
+- Manejar estado, efectos y contexto de forma limpia.
+
+- Construir modales y formularios con validación.
+
+- Ajustar build para GH Pages (base URL, 404 fallback).
+
+- Troubleshooting de despliegue (ramas, rutas, assets).
+
+### 📌 Próximos pasos
+
+- Mejorar accesibilidad (focus management completo en modales).
+
+- Tests de componentes clave (React Testing Library).
+
+- Migrar estilos a CSS Modules o Styled Components.
+
+### 👩‍💻 Autora
+
+Lina Castro — Full Stack Dev Jr.
+LinkedIn: https://www.linkedin.com/in/lina-castro079/
+
+GitHub: https://github.com/Lina079
