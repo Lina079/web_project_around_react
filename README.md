@@ -3,7 +3,7 @@
 **Demo:** https://lina079.github.io/web_project_around_react/  
 **Stack:** React · Vite · CSS · Context API · Fetch/REST · ESLint · GitHub Pages
 
-## 🧭 Resumen para reclutadores (60 segundos)
+## 🧭 Resumen 
 Aplicación tipo “galería social” donde el usuario:
 - Edita su **perfil** (nombre, bio, avatar)
 - **Crea** y **elimina** tarjetas con imagen y título
